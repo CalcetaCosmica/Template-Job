@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recovery Notes</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F8F0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #F5FFF5;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .form-group label {
+            width: 100px;
+            text-align: left;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"] {
+            flex: 1;
+            padding: 5px;
+        }
+        .form-group input[type="checkbox"] {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .form-group .checkbox-label {
+            flex: 1;
+            margin-left: 5px;
+        }
+        .form-group select {
+            flex: 1;
+            padding: 5px;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        textarea {
+            display: block;
+            margin: 10px auto;
+            width: 100%;
+            min-height: 200px;
+            padding: 5px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center">Recovery Notes</h1>
+    <div class="container">
+        <form id="notaForm">
+            <div class="form-group">
+                <label for="cte"><b>CTE:</b></label>
+                <input type="text" id="cteText" name="cteText">
+            </div>
+            <div class="form-group">
+                <label for="qa"><b>QA:</b></label>
+                <input type="checkbox" id="qa" name="qa">
+                <span class="checkbox-label" id="qaStatus"></span>
+            </div>
+            <div class="form-group">
+                <label for="da">DA:</label>
+                <input type="text" id="daText" name="daText">
+            </div>
+            <div class="form-group">
+                <label for="bt">BT:</label>
+                <input type="text" id="btText" name="btText" oninput="agregarSignoDolarBT()">
+            </div>
+            <div class="form-group">
+                <label for="ra">RA:</label>
+                <input type="text" id="raText" name="raText">
+            </div>
+            <div class="form-group">
+                <label for="pp">PP:</label>
+                <input type="date" id="pp" name="pp">
+            </div>
+            <div class="form-group">
+                <label for="cantidadPP">Cantidad de PP:</label>
+                <input type="text" id="cantidadPP" name="cantidadPP" oninput="agregarSignoDolarPP()">
+            </div>
+            <div class="form-group">
+                <label for="metodoPago">Método de pago:</label>
+                <input type="text" id="metodoPago" name="metodoPago">
+            </div>
+            <div class="form-group">
+                <label for="cambioContacto">Cambio de contacto:</label>
+                <select id="cambioContacto" name="cambioContacto">
+                    <option value="El mismo">El mismo</option>
+                    <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                    <option value="N/A">N/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <select id="email" name="email">
+                    <option value="El mismo">El mismo</option>
+                    <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                    <option value="N/A">N/A</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rec"><b>REC:</b></label>
+                <input type="checkbox" id="rec" name="rec">
+                <span class="checkbox-label" id="recStatus"></span>
+            </div>
+            <div class="form-group">
+                <label for="ayudaAdicional"><b>Ayuda adicional:</b></label>
+                <input type="checkbox" id="ayudaAdicional" name="ayudaAdicional">
+                <span class="checkbox-label" id="ayudaAdicionalStatus"></span>
+            </div>
+            <div class="form-group">
+                <label for="agradeceLlamada"><b>Se agradece llamada:</b></label>
+                <input type="checkbox" id="agradeceLlamada" name="agradeceLlamada">
+                <span class="checkbox-label" id="agradeceLlamadaStatus"></span>
+            </div>
+            <div class="form-group">
+                <label for="consentimientoSMS">SMS:</label>
+                <select id="consentimientoSMS" name="consentimientoSMS">
+                    <option value="Ya están activos">Ya están activos</option>
+                    <option value="Cliente acepta activación">Cliente acepta activación</option>
+                    <option value="Cliente pide desactivación">Cliente pide desactivación</option>
+                    <option value="No desea activarlos">No desea activarlos</option>
+                    <option value="Cuelga antes de obtener consentimiento">Cuelga antes de obtener consentimiento</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comentario">Comentario:</label>
+                <input type="text" id="comentario" name="comentario">
+            </div>
+        </form>
+    </div>
+    <textarea id="notaGenerada" readonly></textarea>
+    <div class="buttons">
+        <button type="button" onclick="borrarCampos()">Borrar Campos</button>
+        <button type="button" onclick="copiarNota()">Copiar Nota</button>
+    </div>
+    <script>
+        // Funciones anteriores... (el código JS anterior)
+        function generarNota() {
+            var nota = "";
+            var comentario = document.getElementById("comentario").value;
+            var cte = document.getElementById("cteText").value;
+            var qaChecked = document.getElementById("qa").checked;
+            var da = document.getElementById("daText").value;
+            var bt = document.getElementById("btText").value;
+            var ra = document.getElementById("raText").value;
+            var pp = document.getElementById("pp").value;
+            var cantidadPP = document.getElementById("cantidadPP").value;
+            var metodoPago = document.getElementById("metodoPago").value;
+            var cambioContacto = document.getElementById("cambioContacto").value;
+            var email = document.getElementById("email").value;
+            var recChecked = document.getElementById("rec").checked;
+            var ayudaAdicionalChecked = document.getElementById("ayudaAdicional").checked;
+            var agradeceLlamadaChecked = document.getElementById("agradeceLlamada").checked;
+            var smsConsent = document.getElementById("consentimientoSMS").value;
+            if (comentario) {
+                nota += comentario + "\n";
+            }
+            if (cte) {
+                nota += "CTE: " + cte + "\n";
+            }
+            if (qaChecked) {
+                nota += "QA: (OK)\n";
+            }
+            if (da) {
+                nota += "DA: " + da + "\n";
+            }
+            if (bt) {
+                nota += "BT: " + bt + "\n";
+            }
+            if (ra) {
+                nota += "RA: " + ra + "\n";
+            }
+            if (pp) {
+                nota += "PP: " + pp + "\n";
+            }
+            if (cantidadPP) {
+                nota += "Cantidad de PP: " + cantidadPP + "\n";
+            }
+            if (metodoPago) {
+                nota += "Método de pago: " + metodoPago + "\n";
+            }
+            if (cambioContacto !== "El mismo") {
+                nota += "Cambio de contacto: " + cambioContacto + "\n";
+            }
+            if (email !== "El mismo") {
+                nota += "E-mail: " + email + "\n";
+            }
+            if (recChecked) {
+                nota += "REC: (OK)\n";
+            }
+            if (ayudaAdicionalChecked) {
+                nota += "Ayuda adicional: (OK)\n";
+            }
+            if (agradeceLlamadaChecked) {
+                nota += "Se agradece llamada: (OK)\n";
+            }
+            if (smsConsent !== "Ya están activos") {
+                nota += "SMS: " + smsConsent + "\n";
+            }
+            document.getElementById("notaGenerada").value = nota;
+        }
+        function borrarCampos() {
+            document.getElementById("notaForm").reset();
+            generarNota();
+        }
+        function copiarNota() {
+            var notaGenerada = document.getElementById("notaGenerada");
+            notaGenerada.select();
+            notaGenerada.setSelectionRange(0, 99999); // Para dispositivos móviles
+            document.execCommand("copy");
+            alert("Nota copiada al portapapeles: \n" + notaGenerada.value);
+        }
+        // Agregar event listeners a los campos de entrada
+        document.getElementById("cteText").addEventListener("input", generarNota);
+        document.getElementById("qa").addEventListener("click", generarNota);
+        document.getElementById("daText").addEventListener("input", generarNota);
+        document.getElementById("btText").addEventListener("input", generarNota);
+        document.getElementById("raText").addEventListener("input", generarNota);
+        document.getElementById("pp").addEventListener("change", generarNota);
+        document.getElementById("cantidadPP").addEventListener("input", generarNota);
+        document.getElementById("metodoPago").addEventListener("input", generarNota);
+        document.getElementById("cambioContacto").addEventListener("change", generarNota);
+        document.getElementById("email").addEventListener("change", generarNota);
+        document.getElementById("rec").addEventListener("click", generarNota);
+        document.getElementById("ayudaAdicional").addEventListener("click", generarNota);
+        document.getElementById("agradeceLlamada").addEventListener("click", generarNota);
+        document.getElementById("consentimientoSMS").addEventListener("change", generarNota);
+        document.getElementById("comentario").addEventListener("input", generarNota);
+        // Generar nota inicial al cargar la página
+        generarNota();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
