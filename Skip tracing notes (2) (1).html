@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000	;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    h1 {
+      color: #F0F3F4	;
+    }
+    h2 {
+      color: #F0F3F4	;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #E5E8E8;
+    }
+    .option:hover {
+      background-color: #82E0AA	;
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      const selected =
+        document.getSelection().rangeCount > 0
+          ? document.getSelection().getRangeAt(0)
+          : false;
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+      }
+      alert('Texto copiado al portapapeles:\n' + text);
+    }
+  </script>
+</head>
+<body>
+  <h1>Skip Tracing Notes</h1>
+  <h2>1. No contesta Lexis</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Skip:\nPosible Contacto de cliente proporcionado por proveedor externo (Uno mismo)')">Skip</a>
+  </p>
+  <h2>2. Informaciòn obtenida</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Se obtuvo autorización de contacto.\nInformación: Número telefónico.')">RCS Proporciona Información</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nEs el mismo número del cliente, Se obtuvo autorización de contacto.\nInformación:')">RCS Mismo número del cliente</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)')">RCS Agotamiento de Uso</a>
+  </p>
+<h2>3. Otros casos</h2>
+<p>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK No tiene informaciòn en el momento, se puede llamar despuès')">No tiene informaciòn en el momento</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo tiene Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)\nCannot make call.')">No tiene Información</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo lo conoce (SE CRUZA COMO NO LLAMAR)')">No lo conoce</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo puede o no quiere Ayudar (SE CRUZA COMO NO LLAMAR)')">No puede o no quiere Ayudar</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPide que no le llamen (SE CRUZA COMO NO LLAMAR)')">Pide que no le llamen</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPerdió contacto con el cliente (SE COMO NO LLAMAR)')">Perdió contacto con el cliente</a>
+</p>
+  <h2>4. No se puede realizar proceso</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('No se encuentra, no se deja recado')">No se encuentra</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está disponible el tercero')">No está disponible el tercero</a>
+    <a class="option" href="#" onclick="copyToClipboard('SE CRUZA COMO DUPLICADO, No se puede llamar.')">Duplicado</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está en servicio (SE CRUZA COMO TAL)')">No está en servicio</a>
+    <a class="option" href="#" onclick="copyToClipboard('Telefónico Desconectado (SE CRUZA COMO PERMANENTEMENTE DESCONECTADO)')">Telefónico Desconectado</a>
+    <a class="option" href="#" onclick="copyToClipboard('NUMERO EQUIVOCADO (SE CRUZA A EQUIVOCADO)')">Nùmero equivocado</a>
+    <a class="option" href="#" onclick="copyToClipboard('Ininteligible (SE CRUZA COMO EQ) No Habla Español')">Ininteligible</a>
+    <a class="option" href="#" onclick="copyToClipboard('DCSD\nFALLECIO EL MIEMBRO. Se pide obituario y acta de defunfión. Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)')">Fallecimiento del miembro</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC Cannot make call.')">Cannot make call</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC\nError Las reglas de marcado no permiten llamar a este número en este momento.')">Error Las reglas de marcado</a>
+ </p>
+  <h2>5. Contactaciòn con el miembro:</h3>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('CTE: \nQA: OK \nVerifica nombre y fecha de nacimiento: [OK] \nTransferencia cálida: [OK] \nHold:  [OK] \nAgradecimiento: [OK] \nSe transfiere a cartera: [OK]')">Cliente contactado</a>
+  </p>
+</body>
+</html>
