@@ -1,0 +1,904 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Secciones con Botones</title>
+ <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #212529;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #5c1b6c;
+      padding: 10px;
+    }
+    .button {
+      padding: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border: 1px solid #5c1b6c;
+      background-color: #7d2181;
+      color: #ffffff;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #5c1b6c;
+    }
+    .content-section {
+      padding: 20px;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+ </style>
+ <script>
+    function showSection(section) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(s => s.style.display = 'none');
+
+      const selectedSection = document.getElementById(section);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+   
+    }
+    // Ejecuta la función drawBackground al cargar la página y cada vez que se cambia el tamaño de la ventana
+    window.addEventListener('load', drawBackground);
+    window.addEventListener('resize', drawBackground);
+ </script>
+</head>
+<body>
+ <div class="button-container">
+    <div class="button" onclick="showSection('section1')">SPL Cobranza</div>
+    <div class="button" onclick="showSection('section2')">SPL Notes</div>
+    <div class="button" onclick="showSection('section3')">Translator</div>
+ </div>
+
+ <canvas></canvas>
+
+ <div id="section1" class="content-section">
+    
+    <!-- PRIMERA PARTE -->
+    <!-- PRIMERA PARTE -->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>SPL - notes</title>
+        <meta charset="UTF-8">
+        <style>
+            /* Estilos */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #000000;
+            }
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #000000;
+            }
+            .form-group {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+            .form-group label {
+                width: 100px;
+                text-align: left;
+                font-weight: bold;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="date"] {
+                flex: 1;
+                padding: 5px;
+            }
+            .form-group input[type="checkbox"] {
+                flex-grow: 1;
+                margin-left: 10px;
+            }
+            .form-group .checkbox-label {
+                flex: 1;
+                margin-left: 5px;
+            }
+            .form-group select {
+                flex: 1;
+                padding: 5px;
+            }
+            .buttons {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .buttons button {
+                margin: 5px;
+                padding: 8px 16px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            textarea {
+                display: block;
+                margin: 10px auto;
+                width: 100%;
+                min-height: 200px;
+                padding: 5px;
+                resize: none;
+            }
+            h1 {
+                text-align: center;
+                color: #ffffff;
+            }
+            label {
+                font-family: Arial, sans-serif;
+                color: #ccc;
+            }
+
+            .red-button {
+            background-color: #f44336; /* Color rojo */
+            }
+            .red-button:hover {
+            background-color: #d11616;
+            }
+            .custom-checkbox {
+            appearance: none; 
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            width: 30px; 
+            height: 30px; 
+            border: 2px solid #4CAF50; 
+            border-radius: 5px; 
+            outline: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s, border-color 0.3s; 
+            }
+
+            /* Estilo del checkbox cuando está marcado */
+            .custom-checkbox:checked {
+                background-color: #4CAF50; 
+            }
+
+           
+            .custom-checkbox:checked::before {
+                content: '✔'; 
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 20px; 
+                text-align: center;
+                line-height: 28px; 
+                color: white; 
+            }
+            .form-group input[type="text"] {
+            background-color: #ffe880; /* Cuadro de entrada */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            }
+            .form-group input[type="date"] {
+            background-color: #C0FF80; /* Fechas */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            }
+            .form-group select {
+            background-color: #C0FF80; /* Cuadro de seleccion */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+         }   
+        </style>
+    </head>
+    <body>
+        <h1 style="text-align: center">SPL Cobranza</h1>
+        <div class="container">
+            <form id="notaForm">
+
+               
+                <!-- Llamada entrante -->
+             
+                <div class="form-group">
+                    <label for="llamadaint"><b>Llamada entrante</b></label>
+                    <input type="checkbox" id="llamadaint" name="llamadaint" class="custom-checkbox">
+                    <span class="checkbox" id="llamadaintStatus"></span>
+                </div>
+                <!-- Fecha de nacimiento -->
+                <div class="form-group">
+                  <label for="fechnac"><b>Fecha de nacimiento</b></label>
+                  <input type="checkbox" id="fechnac" name="fechnac" class="custom-checkbox">
+                  <span class="checkbox" id="fechnacStatus"></span>
+                </div>
+
+                <!-- Presentación -->
+                <div class="form-group">
+                  <label for="MIRANDA SCRIPT"><b>Presentación</b></label>
+                  <input type="checkbox" id="MIRANDA" name="MIRANDA"class="custom-checkbox">
+                  <span class="checkbox" id="MIRANDAStatus"></span>
+                </div>
+                <!-- NEW BOTTON 6-->
+                <div class="form-group">
+                    <label for="qa"><b>QA</b></label>
+                    <input type="checkbox" id="qa" name="qa" class="custom-checkbox">
+                    <span class="checkbox" id="qaStatus"></span>
+                </div>
+
+                <!-- CTE BOTTON -->
+                <div class="form-group">
+                  <label for="cte"><b>CTE</b></label>
+                  <input type="text" id="cteText" name="cteText">
+                </div>
+
+                <!-- terminación temprana -->
+                <div class="form-group">
+                  <label for="MIRANDA SCRIPT"><b>Evitar terminación temprana:</b></label>
+                  <input type="checkbox" id="temprana" name="temprana" class="custom-checkbox">
+                  <span class="checkbox" id="tempranaStatus"></span>
+                </div>
+
+                <!-- Enlazar --> 
+                <div class="form-group">
+                    <label for="Enlazar"><b>Enlazar</b></label>
+                    <input type="checkbox" id="Enlazar" name="Enlazar" class="custom-checkbox">
+                    <span class="checkbox" id="EnlazarStatus"></span>
+                </div>
+                <!-- Hechos sobre la mesa: -->
+                <div class="form-group">
+                    <label for="Hechos"><b>Hechos sobre la mesa</b></label>
+                    <input type="checkbox" id="Hechos" name="Hechos" class="custom-checkbox">
+                    <span class="checkbox" id="HechosStatus"></span>
+                </div>    
+                <!-- Balance Vencido-->
+                <div class="form-group">
+                    <label for="bv">BV</label>
+                    <input type="text" id="bvText" name="bvText" oninput="agregarSignoDolarBV()">
+                </div>
+                <!-- DA -->
+                <div class="form-group">
+                  <label for="da">DA</label>
+                  <input type="text" id="daText" name="daText">
+                </div>
+
+                <!-- WIIFIMs -->         
+                <div class="form-group">
+                    <label for="WIIFIMs"><b>Vende método de pago (WIIFINs)</b></label>
+                    <input type="checkbox" id="WIIFIMs" name="WIIFIMs" class="custom-checkbox">
+                    <span class="checkbox" id="WIIFIMsStatus"></span>
+                </div>
+
+                <!-- Rach -->
+                <div class="form-group">
+                    <label for="Rach"><b>Ofrecer RACH</b></label>
+                    <input type="checkbox" id="Rach" name="Rach" class="custom-checkbox">
+                    <span class="checkbox" id="RachStatus"></span>
+                </div>
+                <!-- PP -->
+                <div class="form-group">
+                    <label for="pp">PP:</label>
+                    <input type="date" id="pp" name="pp">
+                </div>
+                <!-- Cantidad de PP-->
+                <div class="form-group">
+                    <label for="cantidadPP">Monto de PP</label>
+                    <input type="text" id="cantidadPP" name="cantidadPP" oninput="agregarSignoDolarPP()">
+                </div>
+                <!-- Método de pago-->
+                <div class="form-group">
+                  <label for="metodoPago">Método de pago</label>
+                  <input type="text" id="metodoPago" name="metodoPago">
+                </div>
+                <!-- Recibo -->         
+                <div class="form-group">
+                    <label for="Recibo"><b>5 Días hábiles/Recibo</b></label>
+                    <input type="checkbox" id="Recibo" name="Recibo" class="custom-checkbox">
+                    <span class="checkbox" id="ReciboStatus"></span>
+                </div>
+                <!-- RA -->
+                <div class="form-group">
+                  <label for="ra">RA:</label>
+                  <input type="text" id="raText" name="raText">
+                </div>
+                <!-- Empatia -->
+                <div class="form-group">
+                    <label for="Empatia"><b>Empatía</b></label>
+                    <input type="checkbox" id="Empatia" name="Empatia" class="custom-checkbox">
+                    <span class="checkbox" id="EmpatiaStatus"></span>
+                </div>
+                <!-- BT -->
+                <div class="form-group">
+                    <label for="bt">BT:</label>
+                    <input type="text" id="btText" name="btText" oninput="agregarSignoDolarBT()">
+                </div>
+
+                <!-- PFR -->
+                <div class="form-group">
+                    <label for="PFR">PFR</label>
+                    <input type="date" id="PFR" name="PFR">
+                </div>
+                <!-- PRP (Razón de promesa rota:) -->
+                <div class="form-group">
+                    <label for="rpr">PRP</label>
+                    <input type="text" id="rprText" name="rprText">
+                </div>
+                <!-- E-mail -->
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <select id="email" name="email">
+                        <option value=""></option>
+                        <option value="El mismo">El mismo</option>
+                        <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+                <!-- Adress -->
+                <div class="form-group">
+                  <label for="Adress"><b>Adress</b></label>
+                  <input type="checkbox" id="Adress" name="Adress" class="custom-checkbox">
+                  <span class="checkbox" id="AdressStatus"></span>
+                </div>     
+                <!-- vehicle -->
+                <div class="form-group">
+                  <label for="vehicle"><b>Vehicle</b></label>
+                  <input type="checkbox" id="vehicle" name="vehicle" class="custom-checkbox">
+                  <span class="checkbox" id="vehicleStatus"></span>
+                </div>    
+                <!-- phone -->
+                <div class="form-group">
+                  <label for="phone"><b>Phone</b></label>
+                  <input type="checkbox" id="phone" name="phone" class="custom-checkbox">
+                  <span class="checkbox" id="phoneStatus"></span>
+                </div> 
+                <!-- urgency -->
+                <div class="form-group">
+                  <label for="urgency"><b>Create Urgency</b></label>
+                  <input type="checkbox" id="urgency" name="urgency" class="custom-checkbox">
+                  <span class="checkbox" id="urgencyStatus"></span>
+                </div> 
+                <!-- mission -->
+                <div class="form-group">
+                    <label for="mission"><b>Create mission</b></label>
+                    <input type="checkbox" id="mission" name="mission" class="custom-checkbox">
+                    <span class="checkbox" id="missionStatus"></span>
+                </div> 
+                <!-- racap_wam -->
+                <div class="form-group">
+                    <label for="racap"><b>RECAP WAM</b></label>
+                    <input type="checkbox" id="racap" name="racap" class="custom-checkbox">
+                    <span class="checkbox" id="racapStatus"></span>
+                </div> 
+                <!-- recap2 _yes -->
+                <div class="form-group">
+                    <label for="yes"><b>RECAP YES</b></label>
+                    <input type="checkbox" id="yes" name="yes" class="custom-checkbox">
+                    <span class="checkbox" id="yesStatus"></span>
+                </div> 
+                <!-- add_help -->
+                <div class="form-group">
+                  <label for="help"><b>Ayuda adicional</b></label>
+                  <input type="checkbox" id="help" name="help" class="custom-checkbox">
+                  <span class="checkbox" id="helpStatus"></span>
+                </div> 
+                <!-- Cierre -->
+                <div class="form-group">
+                  <label for="Cierre"><b>Cierre</b></label>
+                  <input type="checkbox" id="Cierre" name="Cierre" class="custom-checkbox">
+                  <span class="checkbox" id="CierreStatus"></span>
+                </div>
+                <!-- comentario -->
+                <div class="form-group">
+                    <label for="comentario">Comentario</label>
+                    <input type="text" id="comentario" name="comentario">
+                </div>
+            </form>
+        </div>
+        <textarea id="notaGenerada" readonly></textarea>
+        <div class="buttons">
+            <button class="red-button" onclick="borrarCampos()">Borrar Campos</button>
+            <button type="button" onclick="copiarNota()">Copiar Nota</button>
+        </div>
+        <script>
+            // Funciones 
+            function generarNota() {
+                var nota = "";
+                var comentario = document.getElementById("comentario").value;
+                //<!-- NEW BOTTON 1 --> 
+                var llamadaintChecked = document.getElementById("llamadaint").checked;
+                //<!-- NEW BOTTON 2 --> 
+                var fechnacChecked  = document.getElementById("fechnac").checked;
+                //<!-- MIRANDA 3 --> 
+                var MIRANDAChecked  = document.getElementById("MIRANDA").checked;
+                //<!-- MIRANDA 4 --> 
+                
+                //<!-- terminación temprana -->
+                var tempranaChecked  = document.getElementById("temprana").checked;
+                //<!-- Enlazar --> 
+                var EnlazarChecked = document.getElementById("Enlazar").checked;
+                //<!-- Hechos sobre la mesa: --> 
+                var HechosChecked = document.getElementById("Hechos").checked;
+                //<!--  bv --> 
+                var bv = document.getElementById("bvText").value;
+                //<!-- WIIFIMs --> 
+                var WIIFIMsChecked  = document.getElementById("WIIFIMs").checked;
+                //<!-- Rach --> 
+                var RachChecked = document.getElementById("Rach").checked;
+                //<!--  pp --> 
+                var pp = document.getElementById("pp").value;
+                //<!-- cantidadPP -->
+                var cantidadPP = document.getElementById("cantidadPP").value;
+                //<!-- metodoPago  --> 
+                var metodoPago = document.getElementById("metodoPago").value;
+                //<!-- Recibo --> 
+                var ReciboChecked  = document.getElementById("Recibo").checked;
+                //<!-- Empatia --> 
+                var EmpatiaChecked = document.getElementById("Empatia").checked;
+                //<!--  PFR --> 
+                var PFR = document.getElementById("PFR").value;
+                //<!--  rpr --> 
+                var rpr = document.getElementById("rprText").value;
+                //<!-- Adress -->
+                var AdressChecked  = document.getElementById("Adress").checked;
+                //<!-- vehicle -->
+                var vehicleChecked  = document.getElementById("vehicle").checked;
+                //<!-- phone -->
+                var phoneChecked  = document.getElementById("phone").checked;
+                //<!-- urgency -->
+                var urgencyChecked  = document.getElementById("urgency").checked;
+                //<!-- mission -->
+                var missionChecked  = document.getElementById("mission").checked;
+                //<!-- racap_wam -->
+                var racapChecked  = document.getElementById("racap").checked;
+                //<!-- recap2 _yes -->
+                var yesChecked  = document.getElementById("yes").checked;
+                //<!-- add_help -->
+                var helpChecked  = document.getElementById("help").checked;
+                //<!-- Cierre -->
+                var CierreChecked  = document.getElementById("Cierre").checked;
+                var ra = document.getElementById("raText").value;
+                var cte = document.getElementById("cteText").value;
+                var qaChecked = document.getElementById("qa").checked;
+                var da = document.getElementById("daText").value;
+                var bt = document.getElementById("btText").value;           
+                var email = document.getElementById("email").value;
+  
+                //<!-- NEW BOTTON 1 --> 
+                if (llamadaintChecked) {
+                    nota += "SPL-Llamada de Entrante: (OK)\n";
+                }
+                //<!-- NEW BOTTON 2 -->   
+                if (fechnacChecked) {
+                    nota += "Fecha de nacimiento: (OK)\n";
+                }
+                
+                //<!-- NEW BOTTON 3 -->   
+                if (MIRANDAChecked) {
+                    nota += "Presentación: (OK)\n";
+                }
+                //<!-- QA --> 
+                if (qaChecked) {
+                    nota += "QA: (OK)\n";
+                }
+                //<!-- CTE --> 
+                if (cte) {
+                    nota += "CTE: " + cte + "." + "\n";
+                }
+                //<!-- terminación temprana --> 
+                if (tempranaChecked) {
+                    nota += "Evitar terminación temprana: (OK)\n";
+                }
+                //<!-- Enlazar --> 
+                if (EnlazarChecked) {
+                    nota += "Enlazar: (OK)\n";
+                }
+                //<!-- Hechos sobre la mesa: --> 
+                if (HechosChecked) {
+                    nota += "Hechos sobre la mesa: (OK)\n";
+                }
+                //<!-- Balance Vencido --> 
+                if (bv) {
+                    nota += "BV: "+ "$" + bv  + "\n";
+                } 
+                //<!-- DA--> 
+                if (da) {
+                    nota += "DA: " + da + " días." + "\n";
+                }
+                //<!-- WIIFINs: -->
+                if (WIIFIMsChecked) {
+                    nota += "Vende método de pago (WIIFINs): (OK)\n";                
+                }
+                //<!-- RACH --> 
+                if (RachChecked) {
+                    nota += "Ofrecer RACH: (OK)\n";
+                }
+                //<!-- pp -->
+                if (pp) {
+                    nota += "Próximo pago: " + pp + "\n";
+                }
+                //<!-- Cantidad PP --> 
+                if (cantidadPP) {
+                    nota += "Cantidad de PP: " + "$" + cantidadPP + "\n";
+                }
+                //<!-- metodoPago  -->
+                if (metodoPago) {
+                    nota += "Método de pago: " + metodoPago + "." + "\n";
+                }
+                //<!-- ReciboChecked --> 
+                if (ReciboChecked) {
+                    nota += "5 Días hábiles/Recibo: (OK)\n";
+                }
+                //<!-- RA  --> 
+                if (ra) {
+                    nota += "RA: " + ra + "\n";
+                }
+                //<!-- EmpatiaChecked --> 
+                if (EmpatiaChecked) {
+                    nota += "Empatía: (YES)\n";
+                }
+                //<!-- PFR --> 
+                if (PFR) {
+                    nota += "PFR: " + PFR + "\n";
+                }
+                //<!-- bt -->
+                if (bt) {
+                    nota += "BT: "+ "$" + bt + "\n";
+                }
+                //<!-- rpr -->
+                if (rpr) {
+                    nota += "RPR: " + rpr + "." + "\n";
+                }
+                
+                if (email !== "") {
+                    nota += "E-mail: " + email + "\n";
+                }
+                //<!-- Adress -->
+                if (AdressChecked) {
+                nota += "Verificar dirección postal: (OK)\n";
+                }
+                //<!-- vehicle -->
+                if (vehicleChecked) {
+                    nota += "Verificar ubicación del auto: (OK)\n";
+                }
+                //<!-- phone -->
+                if (phoneChecked) {
+                    nota += "Número de teléfono: (OK)\n";
+                }
+                 //<!-- urgency -->
+                 if (urgencyChecked) {
+                    nota += "Crear urgencia: (YES)\n";
+                }
+                //<!-- mission -->
+                if (missionChecked) {
+                    nota += "Create mission: (YES)\n";
+                }
+                //<!-- racap_wam -->
+                if (racapChecked) {
+                    nota += "RECAP WITH WAM: (YES)\n";
+                }
+                //<!-- recap_yes -->
+                if (yesChecked) {
+                    nota += "RECAP WITH YES: (YES)\n";
+                }
+                //<!-- add_help -->
+                if (helpChecked) {
+                    nota += "Ayuda adicional: (OK)\n";
+                }
+                //<!-- Cierre -->
+                if (CierreChecked) {
+                nota += "Cierre: (OK)\n";
+                }
+                //<!-- comentario -->
+                if (comentario) {
+                    nota += "Notas de la llamada: " + comentario + "." +"\n";
+                }
+            
+                document.getElementById("notaGenerada").value = nota;
+            }
+            function borrarCampos() {
+                document.getElementById("notaForm").reset();
+                generarNota();
+            }
+            function copiarNota() {
+                var notaGenerada = document.getElementById("notaGenerada");
+                notaGenerada.select();
+                notaGenerada.setSelectionRange(0, 99999); // Para dispositivos móviles
+                document.execCommand("copy");
+                alert("Nota copiada al portapapeles: \n" + notaGenerada.value);
+            }
+            // Agregar event listeners a los campos de entrada
+            document.getElementById("cteText").addEventListener("input", generarNota);
+            document.getElementById("qa").addEventListener("click", generarNota);
+            //NEW_1
+            document.getElementById("llamadaint").addEventListener("click", generarNota);
+            //NEW_2
+            document.getElementById("fechnac").addEventListener("click", generarNota);
+            //NEW_3
+            document.getElementById("MIRANDA").addEventListener("click", generarNota);
+            //NEW_4
+            document.getElementById("bvText").addEventListener("input", generarNota);
+            //<!-- terminación temprana --> 
+            document.getElementById("temprana").addEventListener("click", generarNota);
+            //<!-- Enlazar -->  
+            document.getElementById("Enlazar").addEventListener("click", generarNota);
+            //<!-- Hechos sobre la mesa: --> 
+            document.getElementById("Hechos").addEventListener("click", generarNota);
+            //bvText
+            document.getElementById("daText").addEventListener("input", generarNota);
+            document.getElementById("btText").addEventListener("input", generarNota);
+            //<!-- WIIFIMs --> 
+            document.getElementById("WIIFIMs").addEventListener("click", generarNota);
+            //<!-- RACH --> 
+            document.getElementById("Rach").addEventListener("click", generarNota); 
+            //pp
+            document.getElementById("pp").addEventListener("change", generarNota);
+            //<!-- Cantidad de proximo pago -->
+            document.getElementById("cantidadPP").addEventListener("input", generarNota);
+            //metodoPago
+            document.getElementById("metodoPago").addEventListener("input", generarNota);
+            //<!-- Recibo --> 
+            document.getElementById("Recibo").addEventListener("click", generarNota); 
+            //<!-- Empatia --> 
+            document.getElementById("Empatia").addEventListener("click", generarNota);
+            //PFR
+            document.getElementById("PFR").addEventListener("change", generarNota);
+            //RPR
+            document.getElementById("rprText").addEventListener("input", generarNota);
+            //<!-- Adress -->
+            document.getElementById("Adress").addEventListener("click", generarNota);
+            //<!-- vehicle -->
+            document.getElementById("vehicle").addEventListener("click", generarNota);
+            //<!-- phone -->
+            document.getElementById("phone").addEventListener("click", generarNota);
+            //<!-- urgency -->
+            document.getElementById("urgency").addEventListener("click", generarNota);
+            //<!-- mission -->
+            document.getElementById("mission").addEventListener("click", generarNota);
+            //<!-- racap_wam -->
+            document.getElementById("racap").addEventListener("click", generarNota);
+            //<!-- recap2_yes -->
+            document.getElementById("yes").addEventListener("click", generarNota);
+            //<!-- add_help -->
+            document.getElementById("help").addEventListener("click", generarNota);
+            //<!-- Cierre -->
+            document.getElementById("Cierre").addEventListener("click", generarNota);
+           
+            document.getElementById("raText").addEventListener("input", generarNota);
+            
+            document.getElementById("cantidadPP").addEventListener("input", generarNota);
+            document.getElementById("email").addEventListener("change", generarNota);
+
+            document.getElementById("comentario").addEventListener("input", generarNota);
+            // Generar nota inicial al cargar la página
+            generarNota();
+        </script>
+
+
+ 
+
+</div>
+ <div id="section2" class="content-section">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>SPL Fast Notes</title>
+      <style>
+        body {
+          font-family: "Roboto", sans-serif;
+          background-color: #000000;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          color: #ffffff;
+        }
+        h2 {
+          color: #ccc;
+        }
+        .option {
+          display: block;
+          margin-bottom: 10px;
+          color: #000;
+          text-decoration: none;
+          border: 1px solid #eced87;
+          padding: 5px 10px;
+          border-radius: 5px;
+          background-color: #fffec4;
+        }
+        .option:hover {
+          background-color: #80FF80;
+        }
+        
+      </style>
+      <script>
+        let infoObtainedCounter = 0;
+    
+        function copyToClipboard(text, option) {
+          if (option === 'RCSProvidesInformation') {
+            infoObtainedCounter++;
+            document.getElementById('infoObtainedCounter').innerText = infoObtainedCounter;
+          }
+    
+          const el = document.createElement('textarea');
+          el.value = text;
+          el.setAttribute('readonly', '');
+          el.style.position = 'absolute';
+          el.style.left = '-9999px';
+          document.body.appendChild(el);
+          const selected =
+            document.getSelection().rangeCount > 0
+              ? document.getSelection().getRangeAt(0)
+              : false;
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          if (selected) {
+            document.getSelection().removeAllRanges();
+            document.getSelection().addRange(selected);
+          }
+          alert('Text copied to clipboard:\n' + text);
+        }
+      </script>
+    </head>
+    <body>
+      <h1>SPL Fast Notes</h1>
+    
+    
+      
+    
+      <h2>1. Cobranza sin contacto</h2>
+      <p>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. No contesta')">No contesta</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - SPL - Llamada de Cobranza. Se dejó VM personalizado con cantidad y días atrasados, así como información de contacto')">VM (personalizado)</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL Llamada de cobranza. Se dejo VM con cantidad pendiente, días de atraso y número de contacto.')">VM (cantidad pendiente)</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL Llamada de cobranza. Se dejo VM generico.')">VM (generico)</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Buzón no configurado NO VM.')">Buzón no configurado</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Buzón lleno NO VM')">Buzón lleno</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Buzón NO personalizado y sin contacto previo con miembro.')">Buzón NO personalizado</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. No se contactó a cliente, 3ro dejó de responder, se libera llamada por QA.')">No se contactó a cliente</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Buzón no disponible después de 45 sec.')">Buzón no disponible</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - SPL - Llamada de cobranza. No recibe llamadas en este momento.')">No recibe llamadas en este momento</a>
+      </p>
+    
+      <h2>2. Casos inconclusos</h2>
+      <p>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza.\nQA:ok\nCTE colgó\n')">Cliente cuelga</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza.\nQA:ok\nCTE manejando no puede continuar con la llamada.')">Cliente manejando</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza\nQA:ok\nCTE trabajando no puede continuar con la llamada.')">Cliente trabajando</a>
+    </p>
+    
+    <h2>3. Interacciones con tercero</h2>
+    <p>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Tercero menciona que CTE no está disponible de momento.')">CTE no está disponible</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Tercero colgó.')">Tercero colgó</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Tercero menciona que es número equivocado, se cruza como tal.')">Número equivocado</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Tercero colgó.')">Tercero colgó</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - SPL - Llamada de cobranza. Tercero pide no se le llame más, se cruza como DNC.')">Tercero pide no se le llame más</a>
+    </p>
+    
+    
+      <h2>4. No se puede realizar proceso</h2>
+      <p>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. Número fuera de servicio, se cruza como tal.')">Fuera de servicio</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - llamada de cobranza. Llamada de seguimiento HS, No contesta.')">Seguimiento HS</a>
+        <a class="option" href="#" onclick="copyToClipboard('SPL - Llamada de cobranza. No contesta, seguimiento a este número, se deja el mismo estatus.')">Se deja el mismo estatus.</a>
+      </p>
+    
+
+    </div>
+
+     <div id="section3" class="content-section">
+    
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <style>
+        #outputText {
+            color: yellow;
+            
+        }
+        
+        button {
+            
+            padding: 15px 20px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            
+        }
+        
+
+        button:hover {
+            background-color: #45a049;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Translator</h1>
+    <textarea id="inputText" rows="4" cols="50" oninput="translateText()"></textarea><br>
+    <button onclick="pasteText()">Paste Text</button>
+    <button onclick="copyTranslatedText()">Copy</button>
+    <button class="red-button" onclick="clearInput()">Clear Input</button>
+    <h2>Translated Text:</h2>
+    <div id="outputText"></div>
+
+    <script>
+        function translateText() {
+            const inputText = document.getElementById('inputText').value;
+            const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURI(inputText)}`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const translatedText = data[0].map(sentence => sentence[0]).join('');
+                    document.getElementById('outputText').innerText = translatedText;
+                    // Actualizar el contenido de notaGenerada
+                    document.getElementById('notaGenerada').value = translatedText;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function copyTranslatedText() {
+            const translatedText = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(translatedText)
+                .then(() => alert('Translated text copied to clipboard!'))
+                .catch(error => console.error('Error copying text: ', error));
+        }
+
+        function pasteText() {
+            navigator.clipboard.readText()
+                .then(text => {
+                    document.getElementById('inputText').value = text;
+                    translateText(); // Traducir automáticamente el texto pegado
+                })
+                .catch(error => {
+                    console.error('Error pasting text: ', error);
+                });
+        }
+
+        function clearInput() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').innerText = '';
+        }
+    </script>
+</body>
+</html>
+
+        
+        
+        
+
+       
+
+        
+

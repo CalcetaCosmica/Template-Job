@@ -1,0 +1,440 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Secciones con Botones</title>
+ <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #212529;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #343a40;
+      padding: 10px;
+    }
+    .button {
+      padding: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border: 1px solid #25384d;
+      background-color: #343a41;
+      color: #ccc;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #172d44;
+    }
+    .content-section {
+      padding: 20px;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+ </style>
+ <script>
+    function showSection(section) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(s => s.style.display = 'none');
+
+      const selectedSection = document.getElementById(section);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+   
+    }
+    // Ejecuta la función drawBackground al cargar la página y cada vez que se cambia el tamaño de la ventana
+    window.addEventListener('load', drawBackground);
+    window.addEventListener('resize', drawBackground);
+ </script>
+</head>
+<body>
+ <div class="button-container">
+    <div class="button" onclick="showSection('section1')">Español</div>
+    <div class="button" onclick="showSection('section2')">English</div>
+    <div class="button" onclick="showSection('section3')">Stats</div>
+ </div>
+
+ <canvas></canvas>
+
+ <div id="section1" class="content-section">
+    
+    
+  <meta charset="UTF-8">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #82E0AA;
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      const selected =
+        document.getSelection().rangeCount > 0
+          ? document.getSelection().getRangeAt(0)
+          : false;
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+      }
+      alert('Texto copiado al portapapeles:\n' + text);
+    }
+  </script>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+  <script>
+    let infoObtainedCounter = 0;
+
+    function copyToClipboard(text, option) {
+      if (option === 'RCSProvidesInformation') {
+        infoObtainedCounter++;
+        document.getElementById('infoObtainedCounter').innerText = infoObtainedCounter;
+      }
+
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      const selected =
+        document.getSelection().rangeCount > 0
+          ? document.getSelection().getRangeAt(0)
+          : false;
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+      }
+      alert('Text copied to clipboard:\n' + text);
+    }
+  </script>
+</head>
+<body>
+  <h1>Skip Tracing Notes</h1>
+
+
+  
+
+  <h2>1. No contesta Lexis</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Skip:\nPosible Contacto de cliente proporcionado por proveedor externo (Uno mismo)')">Skip</a>
+  </p>
+
+  <h2>2. Informaciòn obtenida</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Se obtuvo autorización de contacto.\nInformación: Número telefónico.', 'RCSProvidesInformation')">RCS Proporciona Información</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nEs el mismo número del cliente, Se obtuvo autorización de contacto.\nInformación:', 'RCSProvidesInformation')">RCS Mismo número del cliente</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)', 'RCSProvidesInformation')">RCS Agotamiento de Uso</a>
+  </p>
+
+<h2>3. Otros casos</h2>
+<p>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK No tiene informaciòn en el momento, se puede llamar despuès')">No tiene informaciòn en el momento</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo tiene Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)\nCannot make call.')">No tiene Información</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo lo conoce (SE CRUZA COMO NO LLAMAR)')">No lo conoce</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo puede o no quiere Ayudar (SE CRUZA COMO NO LLAMAR)')">No puede o no quiere Ayudar</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPide que no le llamen (SE CRUZA COMO NO LLAMAR)')">Pide que no le llamen</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPerdió contacto con el cliente (SE COMO NO LLAMAR)')">Perdió contacto con el cliente</a>
+</p>
+
+
+  <h2>4. No se puede realizar proceso</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Fuera de Horario de Marcación')">Fuera de Horario de Marcación</a>
+    <a class="option" href="#" onclick="copyToClipboard('No se encuentra, no se deja recado')">No se encuentra</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está disponible el tercero')">No está disponible el tercero</a>
+    <a class="option" href="#" onclick="copyToClipboard('SE CRUZA DUPLICADO (SE CRUZA A EQUIVOCADO)')">Duplicado</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está en servicio (SE CRUZA COMO TAL)')">No está en servicio</a>
+    <a class="option" href="#" onclick="copyToClipboard('Sigue sin servicio (se vuelve a cruzar)')">Sigue sin servicio</a>
+    <a class="option" href="#" onclick="copyToClipboard('Telefónico Desconectado (SE CRUZA COMO PERMANENTEMENTE DESCONECTADO)')">Telefónico Desconectado</a>
+    <a class="option" href="#" onclick="copyToClipboard('NUMERO EQUIVOCADO (SE CRUZA A EQUIVOCADO)')">Nùmero equivocado</a>
+    <a class="option" href="#" onclick="copyToClipboard('Ininteligible (SE CRUZA COMO EQ) No Habla Español')">Ininteligible</a>
+    <a class="option" href="#" onclick="copyToClipboard('DCSD\nFALLECIO EL MIEMBRO. Se pide obituario y acta de defunfión. Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)')">Fallecimiento del miembro</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC Cannot make call')">Cannot make call</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC\nLas reglas de marcación no permiten llamar a este número en este momento.')">Error [Reglas de Marcación]</a>
+  </p>
+
+  <h2>5. Contactaciòn con el miembro:</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('{\nCTE: \nQA: OK \nVerifica nombre y fecha de nacimiento: [OK] \nTransferencia cálida: [OK] \nHold:  [OK] \nAgradecimiento: [OK] \nSe transfiere a cartera: [OK] \nInfo:\n}')">Cliente contactado</a>
+  </p>
+
+
+ </div>
+
+ <div id="section2" class="content-section">
+
+
+
+    <!-- Contenido de la segunda sección -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #82E0AA;
+    }
+  </style>
+  <script>
+    let infoObtainedCounter = 0;
+
+    function copyToClipboard(text, option) {
+      if (option === 'RCSProvidesInformation') {
+        infoObtainedCounter++;
+        document.getElementById('infoObtainedCounter').innerText = infoObtainedCounter;
+      }
+
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      const selected =
+        document.getSelection().rangeCount > 0
+          ? document.getSelection().getRangeAt(0)
+          : false;
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+      }
+      alert('Text copied to clipboard:\n' + text);
+    }
+  </script>
+</head>
+<body>
+  <h1>Skip Tracing Notes</h1>
+ 
+
+  <h2>1. Lexis Does Not Answer</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Skip:\nPossible Contact from External Provider (Self)')">Skip</a>
+  </p>
+
+  <h2>2. Information Obtained</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProvides Location Information, Contact Authorization Obtained.\nInformation: Phone Number.', 'RCSProvidesInformation')">RCS Provides Information</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nSame as Client Number, Contact Authorization Obtained.\nInformation:', 'RCSProvidesInformation')">RCS Same as Client's Number</a>
+    <a class="option" href=" #" onclick="copyToClipboard('RCS\nQA: OK\nProvides Location Information, Usage Exhausted (CROSSES AS DO NOT CALL)', 'RCSProvidesInformation')">RCS Usage Exhausted</a>
+  </p>
+
+  <h2>3. Other Cases</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK No information at the moment, can call back later')">No information at the moment</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo Location Information, Usage Exhausted (CROSSES AS DO NOT CALL)\nCannot make call.')">No Location Information</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nDoes not know them (CROSSES AS DO NOT CALL)')">Does not know them</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nUnable or unwilling to Help (CROSSES AS DO NOT CALL)')">Unable or unwilling to Help</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nAsks not to be called (CROSSES AS DO NOT CALL)')">Asks not to be called</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nLost contact with the client (CROSSES AS DO NOT CALL)')">Lost contact with the client</a>
+  </p>
+
+  <h2>4. Process Cannot Be Completed</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Outside Dialing Hours')">Outside Dialing Hours</a>
+    <a class="option" href="#" onclick="copyToClipboard('Not available, no message allowed')">Not available</a>
+    <a class="option" href="#" onclick="copyToClipboard('Third party not available')">Third party not available</a>
+    <a class="option" href="#" onclick="copyToClipboard('DUPLICATE (CROSSES AS WRONG NUMBER)')">Duplicate</a>
+    <a class="option" href="#" onclick="copyToClipboard('Not in service (CROSSES AS SUCH)')">Not in service</a>
+    <a class="option" href="#" onclick="copyToClipboard('Still out of service (crosses again)')">Still out of service</a>
+    <a class="option" href="#" onclick="copyToClipboard('Disconnected Phone (CROSSES AS PERMANENTLY DISCONNECTED)')">Disconnected Phone</a>
+    <a class="option" href="#" onclick="copyToClipboard('WRONG NUMBER (CROSSES AS WRONG NUMBER)')">Wrong number</a>
+    <a class="option" href="#" onclick="copyToClipboard('DCSD\nMEMBER DECEASED. Obituary and death certificate requested. Usage Exhausted (CROSSES AS DO NOT CALL)')">Member Deceased</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC Cannot make call')">Cannot make call</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC\nThe dialing rules do not allow calling this number at this time.')">Error [Reglas de Marcación]</a>
+  
+  </p>
+
+  <h2>5. Contact with Member:</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('{\nCTE: \nQA: OK \nVerifies name and date of birth: [OK] \nWarm transfer: [OK] \nHold:  [OK] \nThanks: [OK] \nTransferred to portfolio: [OK] \nInfo:\n}', 'memberContacted')">Member contacted</a>
+  </p>
+
+
+
+
+
+
+
+
+  
+</div>
+  <div id="section3" class="content-section">
+    <h2>Total RCS :   <span id="infoObtainedCounter">0</span></h2>
+  
+  
+ 
+
+    <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Gráfico de Dona</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+      <style>
+        #donutChart {
+          margin-top: 200px; /* Ajuste para mover el gráfico más abajo */
+          margin-left: auto; /* Centra horizontalmente */
+          margin-right: auto; /* Centra horizontalmente */
+          display: block; /* Asegura que el canvas sea un bloque */
+        }
+      </style>
+      </head>
+      <body>
+      
+      <canvas id="donutChart" width="400" height="400"></canvas>
+      
+      <script>
+      // Datos para el gráfico
+      const data = {
+        labels: ['RCS', 'RCP', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [20, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(153, 102, 255)',
+            'rgb(255, 159, 64)'
+          ],
+          hoverOffset: 4
+        }]
+      };
+      
+      // Configuración del gráfico
+      const config = {
+        type: 'doughnut',
+        data: data,
+      };
+      
+      // Crear el gráfico
+      var myChart = new Chart(
+        document.getElementById('donutChart'),
+        config
+      );
+      </script>
+
+</div>
+</body>
+</html>
+
+
+    <!-- (el código anterior de la sección 2 no se ha modificado) -->
+
