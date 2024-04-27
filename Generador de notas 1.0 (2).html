@@ -1,0 +1,1802 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Secciones con Botones</title>
+ <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #212529;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #66B2FF;
+      padding: 10px;
+    }
+    .button {
+      padding: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border: 1px solid #4278aa;
+      background-color: #4278aa;
+      color: #ffffff;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #3399FF;
+    }
+    .content-section {
+      padding: 20px;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+ </style>
+ <script>
+    function showSection(section) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(s => s.style.display = 'none');
+
+      const selectedSection = document.getElementById(section);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+   
+    }
+    // Ejecuta la función drawBackground al cargar la página y cada vez que se cambia el tamaño de la ventana
+    window.addEventListener('load', drawBackground);
+    window.addEventListener('resize', drawBackground);
+ </script>
+</head>
+<body>
+ <div class="button-container">
+    <div class="button" onclick="showSection('section1')">Call</div>
+    <div class="button" onclick="showSection('section2')">Fast Notes</div>
+    <div class="button" onclick="showSection('section4')">Payments</div>
+    <div class="button" onclick="showSection('section3')">Translator</div>
+    <div class="button" onclick="showSection('section5')">Timer</div>
+ </div>
+
+ <canvas></canvas>
+
+ <div id="section1" class="content-section">
+    
+    <!-- PRIMERA PARTE -->
+    <!-- PRIMERA PARTE -->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>notes</title>
+        <meta charset="UTF-8">
+        <style>
+            /* Estilos */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #000000;
+            }
+           
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #000000;
+            }
+            .form-group {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+                width: 370px;
+            }
+            .form-group label {
+                
+                text-align: left;
+                font-weight: bold;
+                width: 150px;
+            }
+            
+            .form-group input[type="checkbox"] {
+                flex-grow: 1;
+                margin-left: 10px;
+                
+                
+            }
+            .form-group .checkbox-label {
+                flex: 1;
+                margin-left: 5px;
+                width: 150px;
+            }
+            
+            .buttons {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .buttons button {
+                margin: 5px;
+                padding: 8px 16px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            textarea {
+                display: block;
+                margin: 10px auto;
+                width: 100%;
+                min-height: 200px;
+                padding: 5px;
+                resize: none;
+            }
+            h1 {
+                text-align: center;
+                color: #ffffff;
+            }
+            label {
+                font-family: Arial, sans-serif;
+                color: #ccc;
+            }
+
+            .red-button {
+            background-color: #f44336; /* Color rojo */
+            }
+            .red-button:hover {
+            background-color: #d11616;
+            }
+            .custom-checkbox {
+            appearance: none; 
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            width: 30px; 
+            height: 30px; 
+            border: 2px solid #4CAF50; 
+            border-radius: 5px; 
+            outline: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s, border-color 0.3s; 
+            }
+
+            /* Estilo del checkbox cuando está marcado */
+            .custom-checkbox:checked {
+                background-color: #4CAF50; 
+            }
+
+           
+            .custom-checkbox:checked::before {
+                content: '✔'; 
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 20px; 
+                text-align: center;
+                line-height: 28px; 
+                color: white; 
+            }
+            .form-group input[type="text"] {
+            background-color: #ffe880; /* Cuadro de entrada */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            width: 210px;  /*TAMAÑO DE IMPUT*/
+            }
+            .form-group input[type="date"] {
+            background-color: #C0FF80; /* Fechas */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none;  
+            width: 210px;  /*TAMAÑO DE IMPUT*/
+            }
+            .form-group select {
+            background-color: #C0FF80; /* Cuadro de seleccion */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            width: 210px;
+            flex-grow: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+
+       
+        <div class="button-container">
+            <button class="coll-button" onclick="showSection('section_a_')">Collections</button>
+            <button class="cs-button" onclick="showSection('section_b_')">Courtesy</button>
+            
+        </div>
+        <style>
+           /* Estilo para el botón "Coll" */
+.coll-button {
+    background-color: #266195;
+    color: white;
+    padding: 15px 30px; /* Aumenta el padding para hacer el botón más grande */
+    border-radius: 10px; /* Aumenta el border-radius para hacer el botón más redondo */
+    cursor: pointer;
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Hace el texto más grueso */
+}
+
+/* Estilo para el botón "CS" */
+.cs-button {
+    background-color: #ED7D31;
+    color: white;
+    padding: 15px 30px; /* Aumenta el padding para hacer el botón más grande */
+    border-radius: 10px; /* Aumenta el border-radius para hacer el botón más redondo */
+    cursor: pointer;
+    font-size: 18px; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Hace el texto más grueso */
+}
+
+        </style>
+        
+    </div>
+<!------DIVISION DE SECCION A DE ALFA-->
+<!------DIVISION DE SECCION A DE ALFA-->
+<!------DIVISION DE SECCION A DE ALFA-->
+<!------DIVISION DE SECCION A DE ALFA-->
+<!------DIVISION DE SECCION A DE ALFA-->
+
+        
+<div id="section_a_" class="content-section">
+
+    <h1 style="text-align: center">Collections Call</h1>
+    <div class="container">
+        <form id="notaForm">
+
+             <!-- No resolution -->
+             <div class="form-group">
+                <label for="resolution">No resolution</label>
+                <select id="resolution" name="resolution">
+                    <option value=""></option>
+                    <option value="#NS-BK / AR">#NS-BK / AR</option>
+                    <option value="##NS-DNC REQUEST / PETICION">#NS-DNC REQUEST / PETICION</option>
+                    <option value="#NS-DCC / CONSOLIDADORA">#NS-DCC / CONSOLIDADORA</option>
+                    <option value="#NS-PTP REMINDER">#NS-PTP REMINDER</option>
+                    <option value="#NS-XFR CALL">#NS-XFR CALL</option>
+                    <option value="#NS-HUNG UP">#NS-HUNG UP</option>
+                    <option value="#NS-WORKING">#NS-WORKING</option>
+                    <option value="#NS-DRIVING">#NS-DRIVING</option>
+                    <option value="#NS-CURRENT / AL DÍA">#NS-CURRENT / AL DÍA</option>
+                    <option value="#NS-DOLEX">#NS-DOLEX</option>
+                    <option value="#NS-BARRY">#NS-BARRY</option>
+                    <option value="#NS-MONEY GRAM">#NS-MONEY GRAM</option>
+                    <option value="#NS-DISBURMENT CHECK ISSUE">#NS-DISBURMENT CHECK ISSUE</option>
+                    <option value="#NS-PAYMENT IN WRONG LOAN">#NS-PAYMENT IN WRONG LOAN</option>
+                    <option value="#NS-RACH ISSUES ">#NS-RACH ISSUES  </option>
+                    <option value="#NS-REPO PROCESS">#NS-REPO PROCESS</option>
+                </select>
+            </div>
+               
+                <!-- Llamada entrante -->
+             
+                <div class="form-group">
+                    <label for="llamadaint"><b>Llamada entrante</b></label>
+                    <input type="checkbox" id="llamadaint" name="llamadaint" class="custom-checkbox">
+                    <span class="checkbox" id="llamadaintStatus"></span>
+                </div>
+                <!-- Fecha de nacimiento -->
+                <div class="form-group">
+                  <label for="fechnac"><b>Fecha de nacimiento</b></label>
+                  <input type="checkbox" id="fechnac" name="fechnac" class="custom-checkbox">
+                  <span class="checkbox" id="fechnacStatus"></span>
+                </div>
+
+                <!-- Presentación -->
+                <div class="form-group">
+                  <label for="MIRANDA SCRIPT"><b>Presentación</b></label>
+                  <input type="checkbox" id="MIRANDA" name="MIRANDA"class="custom-checkbox">
+                  <span class="checkbox" id="MIRANDAStatus"></span>
+                </div>
+                
+                <!-- NEW BOTTON 6-->
+                <div class="form-group">
+                    <label for="qa"><b>Minimiranda</b></label>
+                    <input type="checkbox" id="qa" name="qa" class="custom-checkbox">
+                    <span class="checkbox" id="qaStatus"></span>
+                </div>
+
+                <!-- CTE BOTTON -->
+                <div class="form-group">
+                  <label for="cte"><b>CTE</b></label>
+                  <input type="text" id="cteText" name="cteText">
+                </div>
+
+                <!-- terminación temprana -->
+                <div class="form-group">
+                  <label for="MIRANDA SCRIPT"><b>Evitar terminación temprana</b></label>
+                  <input type="checkbox" id="temprana" name="temprana" class="custom-checkbox">
+                  <span class="checkbox" id="tempranaStatus"></span>
+                </div>
+
+                <!-- Enlazar --> 
+                <div class="form-group">
+                    <label for="Enlazar"><b>Enlazar</b></label>
+                    <input type="checkbox" id="Enlazar" name="Enlazar" class="custom-checkbox">
+                    <span class="checkbox" id="EnlazarStatus"></span>
+                </div>
+                <!-- Hechos sobre la mesa: -->
+                <div class="form-group">
+                    <label for="Hechos"><b>Hechos sobre la mesa</b></label>
+                    <input type="checkbox" id="Hechos" name="Hechos" class="custom-checkbox">
+                    <span class="checkbox" id="HechosStatus"></span>
+                </div>    
+                <!-- Balance Vencido-->
+                <div class="form-group">
+                    <label for="bv">BV</label>
+                    <input type="text" id="bvText" name="bvText" oninput="agregarSignoDolarBV()">
+                </div>
+                <!-- DA -->
+                <div class="form-group">
+                  <label for="da">DA</label>
+                  <input type="text" id="daText" name="daText">
+                </div>
+
+                <!-- WIIFIMs -->         
+                <div class="form-group">
+                    <label for="WIIFIMs"><b>Vende método de pago (WIIFINs)</b></label>
+                    <input type="checkbox" id="WIIFIMs" name="WIIFIMs" class="custom-checkbox">
+                    <span class="checkbox" id="WIIFIMsStatus"></span>
+                </div>
+
+                <!-- Rach -->
+                <div class="form-group">
+                    <label for="Rach"><b>Ofrecer RACH</b></label>
+                    <input type="checkbox" id="Rach" name="Rach" class="custom-checkbox">
+                    <span class="checkbox" id="RachStatus"></span>
+                </div>
+                <!-- PP -->
+                <div class="form-group">
+                    <label for="pp">PP</label>
+                    <input type="date" id="pp" name="pp">
+                </div>
+                <!-- Cantidad de PP-->
+                <div class="form-group">
+                    <label for="cantidadPP">Monto de PP</label>
+                    <input type="text" id="cantidadPP" name="cantidadPP" oninput="agregarSignoDolarPP()">
+                </div>
+                <!-- Método de pago-->
+                <div class="form-group">
+                  <label for="metodoPago">Método de pago</label>
+                  <input type="text" id="metodoPago" name="metodoPago">
+                </div>
+                <!-- Recibo -->         
+                <div class="form-group">
+                    <label for="Recibo"><b>5 Días hábiles/Recibo</b></label>
+                    <input type="checkbox" id="Recibo" name="Recibo" class="custom-checkbox">
+                    <span class="checkbox" id="ReciboStatus"></span>
+                </div>
+                <!-- RA -->
+                <div class="form-group">
+                  <label for="ra">RA</label>
+                  <input type="text" id="raText" name="raText">
+                </div>
+                <!-- Empatia -->
+                <div class="form-group">
+                    <label for="Empatia"><b>Empatía</b></label>
+                    <input type="checkbox" id="Empatia" name="Empatia" class="custom-checkbox">
+                    <span class="checkbox" id="EmpatiaStatus"></span>
+                </div>
+                <!-- BT -->
+                <div class="form-group">
+                    <label for="bt">BT</label>
+                    <input type="text" id="btText" name="btText" oninput="agregarSignoDolarBT()">
+                </div>
+
+                <!-- PFR -->
+                <div class="form-group">
+                    <label for="PFR">PF Recargo</label>
+                    <input type="date" id="PFR" name="PFR">
+                </div>
+                <!-- PRP (Razón de promesa rota:) -->
+                <div class="form-group">
+                    <label for="rpr">R Promesa Rota</label>
+                    <input type="text" id="rprText" name="rprText">
+                </div>
+                 <!-- E-mail -->
+                 <div class="form-group">
+                    <label for="email">E-mail </label>
+                    <select id="email" name="email">
+                        <option value=""></option>
+                        <option value="El mismo">El mismo</option>
+                        <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+
+                <!-- Adress -->
+                
+                <div class="form-group">
+                    <label for="Adress">Dirección</label>
+                    <select id="Adress" name="Adress">
+                        <option value=""></option>
+                        <option value="La misma">La misma</option>
+                        <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+
+                <!-- phone -->
+                 <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <select id="phone" name="phone">
+                        <option value=""></option>
+                        <option value="El mismo">El mismo</option>
+                        <option value="Se actualiza en sistema">Se actualiza en sistema</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+
+                
+                <!-- urgency -->
+                <div class="form-group">
+                  <label for="urgency"><b>Crear urgencia</b></label>
+                  <input type="checkbox" id="urgency" name="urgency" class="custom-checkbox">
+                  <span class="checkbox" id="urgencyStatus"></span>
+                </div> 
+                <!-- mission -->
+                <div class="form-group">
+                    <label for="mission"><b>Crear misión</b></label>
+                    <input type="checkbox" id="mission" name="mission" class="custom-checkbox">
+                    <span class="checkbox" id="missionStatus"></span>
+                </div> 
+                <!-- racap_wam -->
+                <div class="form-group">
+                    <label for="racap"><b>RECAP WAM</b></label>
+                    <input type="checkbox" id="racap" name="racap" class="custom-checkbox">
+                    <span class="checkbox" id="racapStatus"></span>
+                </div> 
+                <!-- recap2 _yes -->
+                <div class="form-group">
+                    <label for="yes"><b>RECAP YES</b></label>
+                    <input type="checkbox" id="yes" name="yes" class="custom-checkbox">
+                    <span class="checkbox" id="yesStatus"></span>
+                </div> 
+                <!-- add_help -->
+                <div class="form-group">
+                  <label for="help"><b>Ayuda adicional</b></label>
+                  <input type="checkbox" id="help" name="help" class="custom-checkbox">
+                  <span class="checkbox" id="helpStatus"></span>
+                </div> 
+                <!-- Cierre -->
+                <div class="form-group">
+                  <label for="Cierre"><b>Cierre</b></label>
+                  <input type="checkbox" id="Cierre" name="Cierre" class="custom-checkbox">
+                  <span class="checkbox" id="CierreStatus"></span>
+                </div>
+                <!-- comentario -->
+                <div class="form-group">
+                    <label for="comentario">Comentario</label>
+                    <input type="text" id="comentario" name="comentario">
+                </div>
+            </form>
+        </div>
+        <textarea id="notaGenerada" readonly></textarea>
+        <div class="buttons">
+            <button class="red-button" onclick="borrarCamposCollection()">Borrar Campos</button>
+            <button type="button" onclick="copiarNotaCollection()">Copiar ES</button>
+            <button onclick="traducirYCopiarNota()" style="background-color: blue; color: white;">Copiar EN</button>
+
+        </div>
+
+        
+        <script>
+            // Funciones 
+            function generarNota() {
+                var nota = "";
+                var comentario = document.getElementById("comentario").value;
+                //<!-- NEW BOTTON 1 --> 
+                var llamadaintChecked = document.getElementById("llamadaint").checked;
+                //<!-- NEW BOTTON 2 --> 
+                var fechnacChecked  = document.getElementById("fechnac").checked;
+                //<!-- MIRANDA 3 --> 
+                var MIRANDAChecked  = document.getElementById("MIRANDA").checked;
+                //<!-- MIRANDA 4 --> 
+                
+                //<!-- terminación temprana -->
+                var tempranaChecked  = document.getElementById("temprana").checked;
+                //<!-- Enlazar --> 
+                var EnlazarChecked = document.getElementById("Enlazar").checked;
+                //<!-- Hechos sobre la mesa: --> 
+                var HechosChecked = document.getElementById("Hechos").checked;
+                //<!--  bv --> 
+                var bv = document.getElementById("bvText").value;
+                //<!-- WIIFIMs --> 
+                var WIIFIMsChecked  = document.getElementById("WIIFIMs").checked;
+                //<!-- Rach --> 
+                var RachChecked = document.getElementById("Rach").checked;
+                //<!--  pp --> 
+                var pp = document.getElementById("pp").value;
+                //<!-- cantidadPP -->
+                var cantidadPP = document.getElementById("cantidadPP").value;
+                //<!-- metodoPago  --> 
+                var metodoPago = document.getElementById("metodoPago").value;
+                //<!-- Recibo --> 
+                var ReciboChecked  = document.getElementById("Recibo").checked;
+                //<!-- Empatia --> 
+                var EmpatiaChecked = document.getElementById("Empatia").checked;
+                //<!--  PFR --> 
+                var PFR = document.getElementById("PFR").value;
+                //<!--  rpr --> 
+                var rpr = document.getElementById("rprText").value;
+                //<!-- Adress -->
+                var Adress = document.getElementById("Adress").value;
+                
+                
+                //<!-- phone -->
+                var phone  = document.getElementById("phone").value;
+                //<!-- urgency -->
+                var urgencyChecked  = document.getElementById("urgency").checked;
+                //<!-- mission -->
+                var missionChecked  = document.getElementById("mission").checked;
+                //<!-- racap_wam -->
+                var racapChecked  = document.getElementById("racap").checked;
+                //<!-- recap2 _yes -->
+                var yesChecked  = document.getElementById("yes").checked;
+                //<!-- add_help -->
+                var helpChecked  = document.getElementById("help").checked;
+                //<!-- Cierre -->
+                var CierreChecked  = document.getElementById("Cierre").checked;
+                var ra = document.getElementById("raText").value;
+                var cte = document.getElementById("cteText").value;
+                var qaChecked = document.getElementById("qa").checked;
+                var da = document.getElementById("daText").value;
+                var bt = document.getElementById("btText").value;           
+                var email = document.getElementById("email").value;
+                var resolution = document.getElementById("resolution").value;
+                    
+                //////IMPUT PRUEVA
+               
+
+                //<!-- resolution --> 
+                if (resolution !== "") {
+                    nota += resolution+"\n";
+                }
+                 //<!-- Llamada int --> 
+                if (llamadaintChecked) {
+                    nota += "Llamada de Entrante: (OK)\n";
+                }
+                //<!-- NEW BOTTON 2 -->   
+                if (fechnacChecked) {
+                    nota += "Fecha de nacimiento: (OK)\n";
+                }
+                
+                //<!-- NEW BOTTON 3 -->   
+                if (MIRANDAChecked) {
+                    nota += "Presentación: (OK)\n";
+                }
+
+                //<!-- QA --> 
+                if (qaChecked) {
+                    nota += "Minimiranda: (OK)\n";
+                }
+                //<!-- CTE --> 
+                if (cte) {
+                    nota += "CTE: " + cte + "." + "\n";
+                }
+                //<!-- terminación temprana --> 
+                if (tempranaChecked) {
+                    nota += "Evitar terminación temprana: (OK)\n";
+                }
+                //<!-- Enlazar --> 
+                if (EnlazarChecked) {
+                    nota += "Enlazar: (OK)\n";
+                }
+                //<!-- Hechos sobre la mesa: --> 
+                if (HechosChecked) {
+                    nota += "Hechos sobre la mesa: (OK)\n";
+                }
+                //<!-- Balance Vencido --> 
+                if (bv) {
+                    nota += "BV: "+ "$" + bv  + "\n";
+                } 
+                //<!-- DA--> 
+                if (da) {
+                    nota += "DA: " + da + " días." + "\n";
+                }
+                //<!-- WIIFINs: -->
+                if (WIIFIMsChecked) {
+                    nota += "Vende método de pago (WIIFINs): (OK)\n";                
+                }
+                //<!-- RACH --> 
+                if (RachChecked) {
+                    nota += "Ofrecer RACH: (OK)\n";
+                }
+                //<!-- pp -->
+                if (pp) {
+                    nota += "Próximo pago: " + pp + "\n";
+                }
+                //<!-- Cantidad PP --> 
+                if (cantidadPP) {
+                    nota += "Cantidad de PP: " + "$" + cantidadPP + "\n";
+                }
+                //<!-- metodoPago  -->
+                if (metodoPago) {
+                    nota += "Método de pago: " + metodoPago + "." + "\n";
+                }
+                //<!-- ReciboChecked --> 
+                if (ReciboChecked) {
+                    nota += "5 Días hábiles/Recibo: (OK)\n";
+                }
+                //<!-- RA  --> 
+                if (ra) {
+                    nota += "RA: " + ra + "\n";
+                }
+                //<!-- EmpatiaChecked --> 
+                if (EmpatiaChecked) {
+                    nota += "Empatía: (YES)\n";
+                }
+                //<!-- PFR --> 
+                if (PFR) {
+                    nota += "PFR: " + PFR + "\n";
+                }
+                //<!-- bt -->
+                if (bt) {
+                    nota += "BT: "+ "$" + bt + "\n";
+                }
+                //<!-- rpr -->
+                if (rpr) {
+                    nota += "RPR: " + rpr + "." + "\n";
+                }
+                
+                if (email !== "") {
+                    nota += "E-mail: " + email + "\n";
+                }
+                //<!-- Adress -->
+                if (Adress) {
+                nota += "Verificar dirección postal: " + Adress +"\n";
+                }
+                //<!-- phone -->
+                if (phone) {
+                    nota += "Número de teléfono: "+ phone + "\n";
+                }
+                 //<!-- urgency -->
+                 if (urgencyChecked) {
+                    nota += "Crear urgencia: (YES)\n";
+                }
+                //<!-- mission -->
+                if (missionChecked) {
+                    nota += "Crear misión: (YES)\n";
+                }
+                //<!-- racap_wam -->
+                if (racapChecked) {
+                    nota += "RECAPITULAR CON WAM: (YES)\n";
+                }
+                //<!-- recap_yes -->
+                if (yesChecked) {
+                    nota += "RECAPITULAR CON YES: (YES)\n";
+                }
+                //<!-- add_help -->
+                if (helpChecked) {
+                    nota += "Ayuda adicional: (OK)\n";
+                }
+                //<!-- Cierre -->
+                if (CierreChecked) {
+                nota += "Cierre: (OK)\n";
+                }
+                //<!-- comentario -->
+                if (comentario) {
+                    nota += "Notas de la llamada: " + comentario + "." +"\n";
+                }
+            
+                document.getElementById("notaGenerada").value = nota;
+            }
+            
+            function borrarCamposCollection() {
+                // Resetea el formulario
+                document.getElementById("notaForm").reset();
+                // Borra el contenido del cuadro de texto de la nota generada
+                document.getElementById("notaGenerada").value = "";
+                // Sube el scroll al inicio de la página
+                window.scrollTo(0, 0);
+            }
+            function copiarNotaCollection() {
+                var notaGenerada = document.getElementById("notaGenerada");
+                notaGenerada.select();
+                notaGenerada.setSelectionRange(0, 99999); // Para dispositivos móviles
+                document.execCommand("copy");
+                
+            }
+            
+            function traducirYCopiarNota() {
+    const notaGenerada = document.getElementById('notaGenerada').value;
+    
+    // Dividir el texto en líneas
+    const lineas = notaGenerada.split('\n');
+    
+    // Guardar la primera línea
+    const primeraLinea = lineas[0];
+    
+    // Omitir la primera línea y unir el resto en un solo texto
+    const textoSinPrimeraLinea = lineas.slice(1).join('\n');
+    
+    const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURI(textoSinPrimeraLinea)}`;
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const translatedNote = data[0].map(sentence => sentence[0]).join('');
+            
+            // Concatenar la primera línea al inicio del texto traducido
+            const notaTraducidaConPrimeraLinea = primeraLinea + '\n' + translatedNote;
+            
+            // Copiar la nota traducida al portapapeles
+            navigator.clipboard.writeText(notaTraducidaConPrimeraLinea)
+                
+                .catch(error => console.error('Error copying text: ', error));
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+            
+            // Agregar event listeners a los campos de entrada
+            document.getElementById("cteText").addEventListener("input", generarNota);
+            document.getElementById("qa").addEventListener("click", generarNota);
+            //NEW_1
+            document.getElementById("llamadaint").addEventListener("click", generarNota);
+            //NEW_2
+            document.getElementById("fechnac").addEventListener("click", generarNota);
+            //NEW_3
+            document.getElementById("MIRANDA").addEventListener("click", generarNota);
+            //Linea grabada
+            
+            //NEW_4
+            document.getElementById("bvText").addEventListener("input", generarNota);
+            //<!-- terminación temprana --> 
+            document.getElementById("temprana").addEventListener("click", generarNota);
+            //<!-- Enlazar -->  
+            document.getElementById("Enlazar").addEventListener("click", generarNota);
+            //<!-- Hechos sobre la mesa: --> 
+            document.getElementById("Hechos").addEventListener("click", generarNota);
+            //bvText
+            document.getElementById("daText").addEventListener("input", generarNota);
+            document.getElementById("btText").addEventListener("input", generarNota);
+            //<!-- WIIFIMs --> 
+            document.getElementById("WIIFIMs").addEventListener("click", generarNota);
+            //<!-- RACH --> 
+            document.getElementById("Rach").addEventListener("click", generarNota); 
+            //pp
+            document.getElementById("pp").addEventListener("change", generarNota);
+            //<!-- Cantidad de proximo pago -->
+            document.getElementById("cantidadPP").addEventListener("input", generarNota);
+            //metodoPago
+            document.getElementById("metodoPago").addEventListener("input", generarNota);
+            //<!-- Recibo --> 
+            document.getElementById("Recibo").addEventListener("click", generarNota); 
+            //<!-- Empatia --> 
+            document.getElementById("Empatia").addEventListener("click", generarNota);
+            //PFR
+            document.getElementById("PFR").addEventListener("change", generarNota);
+            //RPR
+            document.getElementById("rprText").addEventListener("input", generarNota);
+            //<!-- Adress -->
+            document.getElementById("Adress").addEventListener("change", generarNota);
+
+            //<!-- phone -->
+            document.getElementById("phone").addEventListener("change", generarNota);
+            //<!-- urgency -->
+            document.getElementById("urgency").addEventListener("click", generarNota);
+            //<!-- mission -->
+            document.getElementById("mission").addEventListener("click", generarNota);
+            //<!-- racap_wam -->
+            document.getElementById("racap").addEventListener("click", generarNota);
+            //<!-- recap2_yes -->
+            document.getElementById("yes").addEventListener("click", generarNota);
+            //<!-- add_help -->
+            document.getElementById("help").addEventListener("click", generarNota);
+            //<!-- Cierre -->
+            document.getElementById("Cierre").addEventListener("click", generarNota);
+           
+            document.getElementById("raText").addEventListener("input", generarNota);
+            
+            document.getElementById("cantidadPP").addEventListener("input", generarNota);
+            document.getElementById("email").addEventListener("change", generarNota);
+            document.getElementById("resolution").addEventListener("change", generarNota);
+            document.getElementById("comentario").addEventListener("input", generarNota);
+            // Generar nota inicial al cargar la página
+            generarNota();
+        </script>
+
+<!---DICISION DE SECCIÓN B, be de burro-->
+<!---DICISION DE SECCIÓN B, be de burro-->
+<!---DICISION DE SECCIÓN B, be de burro-->
+<!---DICISION DE SECCIÓN B, be de burro-->
+<!---DICISION DE SECCIÓN B, be de burro-->
+</div>
+<div id="section_b_" class="content-section">
+    
+    <h1 style="text-align: center">Courtesy call</h1>
+    <div class="container">
+    <form id="notaFormtres">
+
+        <!-- presentation -->
+        <div class="form-group">
+            <label for="presentation"><b>Presentación</b></label>
+            <input type="checkbox" id="presentation" name="presentation" class="custom-checkbox">
+            <span class="checkbox" id="presentationStatus"></span>
+        </div>
+
+        <!-- QA -->
+        <div class="form-group">
+            <label for="qa_2"><b>Minimiranda</b></label>
+            <input type="checkbox" id="qa_2" name="qa_2" class="custom-checkbox">
+            <span class="checkbox" id="qa_2Status"></span>
+        </div>
+
+        <!-- CTE BOTTON -->
+        <div class="form-group">
+          <label for="cte_2"><b>Miembro</b></label>
+          <input type="text" id="cte_2Text" name="cte_2Text">
+        </div>
+
+       <!-- Intento: -->
+       <div class="form-group">
+        <label for="Intento">Intento</label>
+        <select id="Intento" name="Intento">
+            <option value=""></option>
+            <option value="Cuenta al día">Cuenta al día</option>
+            <option value="Promesa de pago">Promesa de pago</option>
+        </select>
+        </div>
+
+     <!-- Métodos de pago -->
+     <div class="form-group">
+        <label for="paymentmethod"><b>Métodos de pago:
+        </b></label>
+        <input type="text" id="paymentmethodText" name="paymentmethodText">
+    </div>
+
+    <!-- RACH: -->
+    <div class="form-group">
+        <label for="RACH">Ofrecer RACH</label>
+        <select id="RACH" name="RACH">
+            <option value=""></option>
+            <option value="No le interesa">No le interesa</option>
+            <option value="Activará RACH">Activará RACH</option>
+            <option value="Acepta activación">Acepta activación</option>
+    </select>
+    </div> 
+
+    
+    <!-- add_help -->
+    <div class="form-group">
+      <label for="help_2"><b>Ayuda adicional</b></label>
+      <input type="checkbox" id="help_2" name="help_2" class="custom-checkbox">
+      <span class="checkbox" id="help_2Status"></span>
+    </div> 
+    <!-- Cierre -->
+    <div class="form-group">
+      <label for="Cierre_2"><b>Cierre</b></label>
+      <input type="checkbox" id="Cierre_2" name="Cierre_2" class="custom-checkbox">
+      <span class="checkbox" id="Cierre_2Status"></span>
+    </div>
+ 
+    <!-- comentario -->
+    <div class="form-group">
+        <label for="comentario_2">Comentario</label>
+        <input type="text" id="comentario_2" name="comentario_2">
+    </div>
+
+    </form>
+    </div>
+    <textarea id="notaGeneradatres" readonly></textarea>
+    <div class="buttons">
+    <button class="red-button" onclick="borrarCampostres()">Borrar Campos</button>
+    <button type="button" onclick="copiarNotatres()">Copiar ES</button>
+    <button onclick="traducirYCopiarNotaCS()" style="background-color: blue; color: white;">Copiar EN</button>
+    </div>
+
+
+    <script>
+        function generarNotatres() {
+            var nota = "";
+            var comentario_2 = document.getElementById("comentario_2").value;
+            var RACH = document.getElementById("RACH").value;
+            var help_2Checked = document.getElementById("help_2").checked;
+            var Cierre_2Checked = document.getElementById("Cierre_2").checked;
+            var cte_2 = document.getElementById("cte_2Text").value;
+            var qa_2Checked = document.getElementById("qa_2").checked;
+            var presentationChecked = document.getElementById("presentation").checked;
+            var Intento = document.getElementById("Intento").value;
+            var paymentmethod = document.getElementById("paymentmethodText").value;
+    
+            if (presentationChecked) {
+                nota += "RC >> Llamada de cortesía // Presentación: (OK) // ";
+            }
+            if (qa_2Checked) {
+                nota += "Minimiranda: (OK) // ";
+            }
+            if (cte_2) {
+                nota += "CTE: " + cte_2 + "." + "// ";
+            }
+            if (Intento !== "") {
+                nota += "Intento: " + Intento + "// ";
+            }
+            if (paymentmethod) {
+                nota += "Métodos de pago: " + paymentmethod + "." + "// ";
+            }
+            if (RACH !== "") {
+                nota += "Ofrecer RACH: " + RACH + "." + "// ";
+            }
+            if (help_2Checked) {
+                nota += "Ayuda adicional: (OK) //";
+            }
+            if (Cierre_2Checked) {
+                nota += "Cierre: (OK) // ";
+            }
+            if (comentario_2) {
+                nota += "Notas de la llamada: " + comentario_2 + "." + " // ";
+            }
+    
+            document.getElementById("notaGeneradatres").value = nota;
+        }
+    
+    
+        function borrarCampostres() {
+                // Resetea el formulario
+                document.getElementById("notaFormtres").reset();
+                // Borra el contenido del cuadro de texto de la nota generada
+                document.getElementById("notaFormtres").value = "";
+                // Sube el scroll al inicio de la página
+                window.scrollTo(0, 0);
+            }
+
+        function copiarNotatres() {
+            var notaGeneradatres = document.getElementById("notaGeneradatres");
+            notaGeneradatres.select();
+            notaGeneradatres.setSelectionRange(0, 99999); // Para dispositivos móviles
+            document.execCommand("copy");
+            
+        }
+
+        function traducirYCopiarNotaCS() {
+        const translatedText = document.getElementById('notaGeneradatres').value;
+        const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURI(translatedText)}`;
+        
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const translatedNote = data[0].map(sentence => sentence[0]).join('');
+                // Copiar la nota traducida al portapapeles
+                navigator.clipboard.writeText(translatedNote)
+                    
+                    .catch(error => console.error('Error copying text: ', error));
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    
+        document.getElementById("cte_2Text").addEventListener("input", generarNotatres);
+        document.getElementById("qa_2").addEventListener("click", generarNotatres);
+        document.getElementById("presentation").addEventListener("click", generarNotatres);
+        document.getElementById("Intento").addEventListener("change", generarNotatres);
+        document.getElementById("RACH").addEventListener("change", generarNotatres);
+        document.getElementById("help_2").addEventListener("click", generarNotatres);
+        document.getElementById("Cierre_2").addEventListener("click", generarNotatres);
+        document.getElementById("comentario_2").addEventListener("input", generarNotatres);
+        document.getElementById("paymentmethodText").addEventListener("input", generarNotatres);
+        generarNotatres(); // Generar nota inicial al cargar la página
+    </script>
+    
+
+
+
+
+
+
+
+
+
+
+
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+<!---DICISION DE SECCIÓN 2-->
+
+    </div>
+</div>
+ <div id="section2" class="content-section">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Fast Notes</title>
+      <style>
+        body {
+          font-family: "Roboto", sans-serif;
+          background-color: #000000;
+          margin: 20px;
+        }
+        h1 {
+          text-align: center;
+          color: #ffffff;
+        }
+        h2 {
+          color: #ccc;
+        }
+        .option {
+          display: block;
+          margin-bottom: 10px;
+          color: #000;
+          text-decoration: none;
+          border: 1px solid #eced87;
+          padding: 5px 10px;
+          border-radius: 5px;
+          background-color: #fffec4;
+        }
+        .option:hover {
+          background-color: #80FF80;
+        }
+        
+      </style>
+      <script>
+        let infoObtainedCounter = 0;
+    
+        function copyToClipboard(text, option) {
+          const el = document.createElement('textarea');
+          el.value = text;
+          el.setAttribute('readonly', '');
+          el.style.position = 'absolute';
+          el.style.left = '-9999px';
+          document.body.appendChild(el);
+          const selected =
+            document.getSelection().rangeCount > 0
+              ? document.getSelection().getRangeAt(0)
+              : false;
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          if (selected) {
+            document.getSelection().removeAllRanges();
+            document.getSelection().addRange(selected);
+          }
+        }
+      </script>
+    </head>
+    <body>
+      <h1>Fast Notes</h1>
+    
+    
+    
+      <h2>1. Cobranza sin contacto</h2>
+      <p>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. No contesta/Collection call. Does not answer')">No contesta</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. No recibe llamadas en este momento./Collection call. You are not receiving calls at this time.')">No recibe llamadas en este momento</a>
+      </p>
+    
+      <h2>2. Casos inconclusos</h2>
+      <p>
+        
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza./Collection call.\nQA:ok\nCTE manejando no puede continuar con la llamada./driving cannot continue with the call.')">Cliente manejando</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza./Collection call.\nQA:ok\nCTE trabajando no puede continuar con la llamada./working cannot continue with the call.')">Cliente trabajando</a>
+    </p>
+    
+    <h2>3. Interacciones con tercero</h2>
+    <p>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Tercero menciona que CTE no está disponible de momento./Collection call. Third mentions that CTE is not available at the moment.')">Tercero menciona que miembro no está</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Tercero colgó./Collection call. Third hung up.')">Tercero colgó</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Tercero menciona que es número equivocado, se cruza como tal./Collection call. Third mentions that it is the wrong number, it is crossed as such.')">Número equivocado</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Tercero pide no se le llame más, se cruza como DNC./Collection call. Third, he asks not to be called anymore, it is crossed as DNC.')">Tercero pide no se le llame más</a>
+    </p>
+    
+    
+      <h2>4. No se puede realizar proceso</h2>
+      <p>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Número fuera de servicio, se cruza como tal./Collection call. Number out of service, crossed as such.')">Fuera de servicio</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. Llamada de seguimiento HS, No contesta./collection call. Follow-up call HS, No answer.')">Seguimiento HS</a>
+        <a class="option" href="#" onclick="copyToClipboard('Llamada de cobranza. No contesta, seguimiento a este número, se deja el mismo estatus./Collection call. No answer, follow up on this number, the same status is left.')">Se deja el mismo estatus.</a>
+      </p>
+    
+    </div>
+
+     <div id="section3" class="content-section">
+    
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <style>
+        #outputText {
+            color: yellow;
+            
+        }
+        
+        button {
+            
+            padding: 15px 20px;
+            font-size: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            
+        }
+        
+
+        button:hover {
+            background-color: #45a049;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Translator</h1>
+    <textarea id="inputText" rows="4" cols="50" oninput="translateText()"></textarea><br>
+    <button onclick="pasteText()">Paste Text</button>
+    <button onclick="copyTranslatedText()">Copy</button>
+    <button class="red-button" onclick="clearInput()">Clear Input</button>
+    <h2>Translated Text:</h2>
+    <div id="outputText"></div>
+
+    <script>
+        function translateText() {
+            const inputText = document.getElementById('inputText').value;
+            const apiUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=${encodeURI(inputText)}`;
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const translatedText = data[0].map(sentence => sentence[0]).join('');
+                    document.getElementById('outputText').innerText = translatedText;
+                    // Actualizar el contenido de notaGenerada
+                    document.getElementById('notaGenerada').value = translatedText;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function copyTranslatedText() {
+            const translatedText = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(translatedText)
+                
+                .catch(error => console.error('Error copying text: ', error));
+        }
+
+        function pasteText() {
+            navigator.clipboard.readText()
+                .then(text => {
+                    document.getElementById('inputText').value = text;
+                    translateText(); // Traducir automáticamente el texto pegado
+                })
+                .catch(error => {
+                    console.error('Error pasting text: ', error);
+                });
+        }
+
+        function clearInput() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').innerText = '';
+        }
+    </script>
+
+
+</div>
+
+<div id="section4" class="content-section">
+
+
+    <div class="button-container">
+        <div class="button coll-tools" onclick="showSection('section_c_')">Coll-Tools</div>
+        <div class="button payments" onclick="showSection('section_d_')">Payments</div>
+    </div>
+    <style>
+        /* Estilo para el botón Payments */
+        .button.payments {
+            background-color: #48C574;
+            /* Otros estilos de botón que desees aplicar */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        /* Estilo para el botón Coll-Tools */
+        .button.coll-tools {
+            background-color: #5B9AD4;
+            /* Otros estilos de botón que desees aplicar */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    
+
+</div>
+<div id="section_c_" class="content-section">
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cobranza</title>
+    </head>
+    <body>
+    <h1 style="text-align: center">Coll-Tools</h1>
+    <div class="container">
+        <form id="notaForm">
+            <!-- Número de pagos a aplazar -->
+            <div class="form-group">
+                <label for="numPagos"><b>Número de pagos a aplazar</b></label>
+                <input type="text" id="numPagos" name="numPagos">
+            </div>
+            <!-- Número de Herramienta -->
+            <div class="form-group">
+                <label for="numHerramienta"><b>Número de Herramienta</b></label>
+                <input type="text" id="numHerramienta" name="numHerramienta">
+            </div>
+            <!-- Monto a pagar/pagado -->
+            <div class="form-group">
+                <label for="montoPagado"><b>Monto a pagar/pagado</b></label>
+                <input type="text" id="montoPagado" name="montoPagado" onblur="this.value=formatAmount(this.value)">
+            </div>
+            <!-- Monto de PTP -->
+            <div class="form-group">
+                <label for="montoPTP"><b>Monto de PTP</b></label>
+                <input type="text" id="montoPTP" name="montoPTP" onblur="this.value=formatAmount(this.value)">
+            </div>
+            <!-- Monto de pago reducido -->
+            <div class="form-group">
+                <label for="montoRed"><b>Monto de pago reducido</b></label>
+                <input type="text" id="montoRed" name="montoRed" onblur="this.value=formatAmount(this.value)">
+            </div>
+            <!-- Próxima fecha de pago -->
+            <div class="form-group">
+                <label for="fechaPago"><b>Próxima fecha de pago</b></label>
+                <input type="date" id="fechaPago" name="fechaPago" value="2024-03-05">
+            </div>
+            <!-- Nueva Fecha de Vencimiento -->
+            <div class="form-group">
+                <label for="nuevaFecha"><b>Nueva Fecha de Vencimiento</b></label>
+                <input type="date" id="nuevaFecha" name="nuevaFecha" value="2024-08-20">
+            </div>
+            <!-- Fecha de Inicio -->
+            <div class="form-group">
+                <label for="fechaInicio"><b>Fecha de Inicio</b></label>
+                <input type="date" id="fechaInicio" name="fechaInicio" value="2024-03-04">
+            </div>
+            <!-- Fecha Fin de Herramienta -->
+            <div class="form-group">
+                <label for="fechaFin"><b>Fecha Fin de Herramienta</b></label>
+                <input type="date" id="fechaFin" name="fechaFin">
+            </div>
+            <!-- Afección -->
+            <div class="form-group">
+                <label for="afeccion"><b>Afección</b></label>
+                <input type="text" id="afeccion" name="afeccion">
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        function formatAmount(amount) {
+            // Formatear el monto con dos decimales si no los tiene
+            return parseFloat(amount).toFixed(2);
+        }
+    </script>
+    
+        
+        <div id="outputText" style="color: yellow;"></div>
+
+        <div class="buttons">
+            <button class="red-button" onclick="borrarCamposPayments()">Borrar Campos</button>
+        </div>
+
+
+        <h2>1. ESPAÑOL</h2>
+        <p>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' OFERTA DE APLAZAMIENTO: Miembro aceptó diferir ['+document.getElementById('numPagos').value+'] pagos, miembro [necesita pagar/pagó] el monto de $[' + document.getElementById('montoPagado').value + '], el aplazamiento [será procesado una vez que el miembro realice el pago/ha sido procesado]. Miembro confirma que puede reanudar los pagos el ['+document.getElementById('fechaPago').value+'].')">Aplazamiento</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' APLAZAMIENTO POR [EMERGENCIA/DIFICULTAD]: Miembro afectado por ['+document.getElementById('afeccion').value+'], se aplazan #['+document.getElementById('numPagos').value+']. Próxima fecha de pago ['+document.getElementById('fechaPago').value+']. Nueva fecha de vencimiento ['+document.getElementById('nuevaFecha').value+']. El miembro considera poder reanudar sus pagos al término del próximo aplazamiento en su Próxima Fecha de Pago siendo el ['+document.getElementById('fechaPago').value+'].I')">Aplazamiento HS/Emergencia</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+document.getElementById('numHerramienta').value+' E-TRIPP / R-TRIPP:R-TRIPP: Miembro aceptó reducir el Pago Regular a $['+document.getElementById('montoRed').value+'], Miembro confirma que puede reanudar sus pagos reducidos el ['+document.getElementById('fechaPago').value+'] y también puede retomar los pagos contractuales el ['+document.getElementById('fechaFin').value+'], TRIPP inicia el ['+document.getElementById('fechaInicio').value+'], la Nueva Fecha Estimada del Último Pago al aplicarse el TRIPP será el ['+document.getElementById('nuevaFecha').value+'].')">TRIPP</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' LOAN MOD: Miembro aceptó reducir el Pago Regular a $['+document.getElementById('montoRed').value+'], Miembro confirma que puede reanudar sus pagos reducidos el ['+document.getElementById('fechaPago').value+'], LOAN MOD inicia el ['+document.getElementById('fechaInicio').value+'], Nueva última fecha de pago es ['+document.getElementById('nuevaFecha').value+'].')">LOAN MOD Preastamo</a>
+        </p>
+
+        <h2>2. ENGLISH</h2>
+        <p>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' DEFERRAL OFFER: Member agreed to defer ['+document.getElementById('numPagos').value+'] payments, member [needs to pay/paid] the amount of $[' + document.getElementById('montoPagado').value + '], deferral [will be processed once member makes payment/has been processed]. Member confirms ability to resume payments on ['+document.getElementById('fechaPago').value+'].')">Deferral</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' DEFERRAL FOR [EMERGENCY/DIFFICULTY]: Member affected by ['+document.getElementById('afeccion').value+'], #['+document.getElementById('numPagos').value+'] payments deferred. Next payment date ['+document.getElementById('fechaPago').value+']. New due date ['+document.getElementById('nuevaFecha').value+']. Member considers being able to resume payments at the end of the next deferral on their Next Payment Date being ['+document.getElementById('fechaPago').value+'].')">Emergency Deferral</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+document.getElementById('numHerramienta').value+' E-TRIPP / R-TRIPP:R-TRIPP: Member agreed to reduce Regular Payment to $['+document.getElementById('montoRed').value+'], Member confirms ability to resume reduced payments on ['+document.getElementById('fechaPago').value+'] and can also resume contractual payments on ['+document.getElementById('fechaFin').value+'], TRIPP starts on ['+document.getElementById('fechaInicio').value+'], New Estimated Last Payment Date when TRIPP is applied will be ['+document.getElementById('nuevaFecha').value+'].')">TRIPP</a>
+        <a class="option" href="#" onclick="copyToClipboard('/ #'+ document.getElementById('numHerramienta').value+' LOAN MOD: Member agreed to reduce Regular Payment to $['+document.getElementById('montoRed').value+'], Member confirms ability to resume reduced payments on ['+document.getElementById('fechaPago').value+'], LOAN MOD starts on ['+document.getElementById('fechaInicio').value+'], New last payment date is ['+document.getElementById('nuevaFecha').value+'].')">Pre-loan MOD</a>
+        </p>
+
+        <script>
+            
+    function generarNota() {
+    var numPagos = document.getElementById("numPagos").value;
+    var numHerramienta = document.getElementById("numHerramienta").value;
+    var montoPagado = formatAmount(document.getElementById("montoPagado").value);
+    var montoPTP = formatAmount(document.getElementById("montoPTP").value);
+    var montoRed = formatAmount(document.getElementById("montoRed").value);
+    var fechaPago = formatDate(document.getElementById("fechaPago").value);
+    var nuevaFecha = formatDate(document.getElementById("nuevaFecha").value);
+    var fechaInicio = formatDate(document.getElementById("fechaInicio").value);
+    var fechaFin = formatDate(document.getElementById("fechaFin").value);
+    var afeccion = document.getElementById("afeccion").value;
+
+    function formatAmount(amount) {
+        return parseFloat(amount).toFixed(2);
+    }
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var year = date.getFullYear();
+        return (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
+    }
+
+
+        nota += "<b>Número de pagos a aplazar:</b> " + numPagos + "<br>";
+        nota += "<b>Número de Herramienta:</b> " + numHerramienta + "<br>";
+        nota += "<b>Monto a pagar/pagado:</b> " + montoPagado + "<br>";
+        nota += "<b>Monto de PTP:</b> " + montoPTP + "<br>";
+        nota += "<b>Monto de pago reducido:</b> " + montoRed + "<br>";
+        nota += "<b>Próxima fecha de pago:</b> " + fechaPago + "<br>";
+        nota += "<b>Nueva Fecha de Vencimiento:</b> " + nuevaFecha + "<br>";
+        nota += "<b>Fecha de Inicio:</b> " + fechaInicio + "<br>";
+        nota += "<b>Fecha Fin de Herramienta:</b> " + fechaFin + "<br>";
+        nota += "<b>Afección:</b> " + afeccion + "<br>";
+
+        document.getElementById("outputText").innerHTML = nota;
+        }
+
+            function borrarCamposPayments() {
+            document.getElementById("numPagos").value = "";
+            document.getElementById("numHerramienta").value = "";
+            document.getElementById("montoPagado").value = "";
+            document.getElementById("montoPTP").value = "";
+            document.getElementById("montoRed").value = "";
+            document.getElementById("fechaPago").value = "";
+            document.getElementById("nuevaFecha").value = "";
+            document.getElementById("fechaInicio").value = "";
+            document.getElementById("fechaFin").value = "";
+            document.getElementById("afeccion").value = "";
+            document.getElementById("outputText").innerHTML = ""; // Limpiar la nota generada
+        }
+
+            function copiarNota() {
+                var notaGenerada = document.getElementById("notaGeneradados");
+                notaGenerada.select();
+                notaGenerada.setSelectionRange(0, 99999); // Para dispositivos móviles
+                document.execCommand("copy");
+               
+            }
+            // Agregar event listeners a los campos de entrada
+            document.getElementById("numPagos").addEventListener("input", generarNota);
+            document.getElementById("numHerramienta").addEventListener("input", generarNota);
+            document.getElementById("montoPagado").addEventListener("input", generarNota);
+            document.getElementById("montoPTP").addEventListener("input", generarNota);
+            document.getElementById("montoRed").addEventListener("input", generarNota);
+            document.getElementById("fechaPago").addEventListener("change", generarNota);
+            document.getElementById("nuevaFecha").addEventListener("change", generarNota);
+            document.getElementById("fechaInicio").addEventListener("change", generarNota);
+            document.getElementById("fechaFin").addEventListener("change", generarNota);
+            document.getElementById("afeccion").addEventListener("input", generarNota);
+            // Generar nota inicial al cargar la página
+            generarNota();
+        </script>
+
+
+
+</div>
+<!------CLIENTE AUTORIZA PAGO FUTURO -->
+<!------CLIENTE AUTORIZA PAGO FUTURO -->
+<!------CLIENTE AUTORIZA PAGO FUTURO -->
+<!------CLIENTE AUTORIZA PAGO FUTURO -->
+<div id="section_d_" class="content-section">
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    </head>
+    <body>
+    <h1 style="text-align: center">Payments</h1>
+    <div class="container">
+        <form id="notaForm">
+
+
+            <!-- Fecha de pago -->
+            <div class="form-group">
+                <label for="fechaprox"><b>Fecha</b></label>
+                <input type="date" id="fechaprox" name="fechaprox" value="2024-03-05">
+            </div>
+            
+            <!-- Monto a pagar-->
+            <div class="form-group">
+                <label for="montoP"><b>Monto</b></label>
+                <input type="text" id="montoP" name="montoP" onblur="this.value=formatAmount(this.value)">
+            </div>
+
+            <!-- Cuenta -->
+            <div class="form-group">
+                <label for="Cuentapage"><b>Cuenta</b></label>
+                <input type="text" id="Cuentapage" name="Cuentapage">
+            </div>
+
+            <!-- Información de contacto -->
+            <div class="form-group">
+                <label for="infcont">Información de contacto</label>
+                <select id="infcont" name="infcont">
+                    <option value=""></option>
+                    <option value="SMS">SMS</option>
+                    <option value="Email">Email</option>
+                    <option value="N/A">N/A</option>
+                </select>
+            </div>
+
+             <!-- Número de confirmación -->
+            <div class="form-group">
+                <label for="Numconfi"><b>Número de confirmación</b></label>
+                <input type="text" id="Numconfi" name="Numconfi">
+            </div>
+
+        </form>
+    </div>
+    
+    <script>
+        function formatAmount(amount) {
+            // Formatear el monto con dos decimales si no los tiene
+            return parseFloat(amount).toFixed(2);
+        }
+    </script>
+    
+        <div id="outputText" style="color: yellow;"></div>
+
+        <div class="buttons">
+            <button class="red-button" onclick="borrarCampos()">Borrar Campos</button>
+        </div>
+
+
+        <h2>1. ESPAÑOL</h2>
+        <p>
+        <a class="option" href="#" onclick="copyToClipboard('AUTORIZA PAGO A TRAVÉS DE PNM el ['+document.getElementById('fechaprox').value+'] por [$'+document.getElementById('montoP').value+'] de la cuenta [xxxx'+document.getElementById('Cuentapage').value+'] PNM cliente. información de contacto PNM ['+document.getElementById('infcont').value+'] número de confirmación: '+document.getElementById('Numconfi').value+'.')">PNM</a>
+        <a class="option" href="#" onclick="copyToClipboard('AUTORIZACIÓN DE PAGO A FUTURO POR MEDIO DE PNM el ['+document.getElementById('fechaprox').value+'] por [$'+document.getElementById('montoP').value+'] de la cuenta [xxxx'+document.getElementById('Cuentapage').value+']. Información de contacto PNM ['+document.getElementById('infcont').value+'] número de confirmación: '+document.getElementById('Numconfi').value+'.')">FPNM</a>
+        <a class="option" href="#" onclick="copyToClipboard('Cliente autoriza pago ACH el: ['+document.getElementById('fechaprox').value+'] Por la cantidad de: [$'+document.getElementById('montoP').value+']. A través de la cuenta: [xxxx'+document.getElementById('Cuentapage').value+']. Se lee al cliente autorización de pago de única ocasión ACH y cliente autoriza. Se recuerda dejar los fondos 3 días hábiles para evitar rebotes.')">ACH</a>
+        <a class="option" href="#" onclick="copyToClipboard('Cliente autoriza pago FACH el: ['+document.getElementById('fechaprox').value+'] Por la cantidad de: [$'+document.getElementById('montoP').value+']. A través de la cuenta: [xxxx'+document.getElementById('Cuentapage').value+']. Se lee al cliente autorización de pago de única ocasión FACH y cliente autoriza. Se recuerda dejar los fondos 3 días hábiles para evitar rebotes.')">FACH</a>
+        </p>
+
+
+        <h2>2. ENGLISH</h2>
+        <p>
+        <a class="option" href="#" onclick="copyToClipboard('AUTHORIZED PAYMENT THROUGH PNM on ['+document.getElementById('fechaprox').value+'] for [$'+document.getElementById('montoP').value+'] from account [xxxx'+document.getElementById('Cuentapage').value+']. PNM customer. PNM contact information ['+document.getElementById('infcont').value+'] confirmation number: '+document.getElementById('Numconfi').value+'.')">PNM</a>
+        <a class="option" href="#" onclick="copyToClipboard('AUTHORIZED FUTURE PNM PAYMENT on ['+document.getElementById('fechaprox').value+'] for  [$'+document.getElementById('montoP').value+'] from account [xxxx'+document.getElementById('Cuentapage').value+']. PNM customer. PNM contact information ['+document.getElementById('infcont').value+'] confirmation number: '+document.getElementById('Numconfi').value+'')">FPNM</a>
+        <a class="option" href="#" onclick="copyToClipboard('Customer authorized ACH payment on: ['+document.getElementById('fechaprox').value+'] for the amount of: [$'+document.getElementById('montoP').value+']. from the account: [xxxx'+document.getElementById('Cuentapage').value+']. Read customer one time ACH script, and customer authorized. Advised Customer to keep the funds in their bank account for up to 3 business days to prevent this payment from bouncing.')">ACH</a>
+        <a class="option" href="#" onclick="copyToClipboard('Customer agreed to set up FACH payment on: ['+document.getElementById('fechaprox').value+'] for the amount of: [$'+document.getElementById('montoP').value+']. from the account: [xxxx'+document.getElementById('Cuentapage').value+']. Read customer one time FACH script, and customer authorized. Advised Customer to keep the funds in their bank account for up to 3 business days to prevent this payment from bouncing.')">FACH</a>
+        </p>
+
+        <script>
+            
+    function generarNota() {
+    var fechaprox = document.getElementById("fechaprox").value;
+    var montoP = document.getElementById("montoP").value;
+    var Cuentapage = formatAmount(document.getElementById("Cuentapage").value);
+    var Numconfi = formatAmount(document.getElementById("Numconfi").value);
+
+    function formatAmount(amount) {
+        return parseFloat(amount).toFixed(2);
+    }
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var year = date.getFullYear();
+        return (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
+    }
+        }
+
+            function borrarCampos() {
+            document.getElementById("fechaprox").value = "";
+            document.getElementById("montoP").value = "";
+            document.getElementById("Cuentapage").value = "";
+            document.getElementById("infcont").value = "";
+            document.getElementById("Numconfi").value = "";
+            document.getElementById("outputText").innerHTML = ""; // Limpiar la nota generada
+        }
+
+            function copiarNota() {
+                var notaGenerada = document.getElementById("notaGeneradados");
+                notaGenerada.select();
+                notaGenerada.setSelectionRange(0, 99999); // Para dispositivos móviles
+                document.execCommand("copy");
+            }
+            // Agregar event listeners a los campos de entrada
+            document.getElementById("fechaprox").addEventListener("change", generarNota);
+            document.getElementById("montoP").addEventListener("input", generarNota);
+            document.getElementById("Cuentapage").addEventListener("input", generarNota);
+            document.getElementById("infcont").addEventListener("change", generarNota);
+            document.getElementById("Numconfi").addEventListener("input", generarNota);
+            // Generar nota inicial al cargar la página
+            generarNota();
+        </script>
+
+</div>
+<div id="section5" class="content-section">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Break and Lunch Timers</title>
+
+<style>
+  /* Estilos globales para el documento */
+  
+.white {
+  color: #fff;
+}
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+
+.negative {
+    color: red; /* o el color que desees para los números negativos */
+}
+
+  .red {
+    color: red;
+  }
+  
+  .yellow {
+    color: #ED7D31;
+  }
+  
+  /* Estilos específicos para el elemento #app */
+  #app .app-box {
+    background-color: #000;
+    color: #fff;
+  }
+
+  button.timerplay {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerplay:hover {
+    background-color: #45a049;
+}
+button.timerstop {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerstop:hover {
+    background-color: #d11616;
+}
+button.timerreset {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #5B9AD4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerreset:hover {
+    background-color: #4278aa;
+}
+
+</style>
+</head>
+<body>
+  
+
+
+<div id="app" class="section">
+    <div class="container">
+        
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <h2 class="subtitle">Break Timer</h2>
+                    
+                    <div class="control custom-inputtimer">
+                      <input class="input" type="number" v-model="breakMinutes" min="0" style="background-color: #FFA500; border: none; padding: 8px; border-radius: 5px; outline: none; width: 210px; color: #333; font-size: 24px; text-align: center; margin: 30px auto; display: block;">
+                    </div>
+                    
+                </div>
+
+                <div class="field">
+                  <div class="control">
+                      <button class="button timerplay" @click="startBreakTimer" :disabled="breakTimerRunning">Start</button>
+                      <button class="button timerstop" @click="stopBreakTimer" :disabled="!breakTimerRunning">Pause</button>
+                      <button class="button timerreset" @click="resetBreakTimer">Reset</button>
+                  </div>
+              </div>
+
+              <!---ESPACIO ENTRE LINEAS-->
+              <div style="margin-bottom: 20px;"></div>
+              <!---ESPACIO ENTRE LINEAS-->
+
+                <div class="box app-box" style="text-align: center; padding: 10px; border: 3px solid rgb(255, 255, 0);">
+                    <p style="font-size: 36px; margin: 0; padding: 10px;" :class="{
+                        'white': breakMinutes > 2,
+                        'orange': breakMinutes <= 2,
+                        'red': breakMinutes <= 0 && breakSeconds > 0,
+                        'negative': breakSeconds <= 0
+                    }">{{ formattedBreakTime }}</p>
+                </div>
+
+              
+
+                
+            </div>
+            <div class="column">
+                <div class="field">
+                    <h2 class="subtitle">Lunch Timer</h2>
+                    <div class="control">
+                        <input class="input" type="number" v-model="lunchMinutes" min="0" style="background-color: #FFA500; border: none; padding: 8px; border-radius: 5px; outline: none; width: 210px; color: #333; font-size: 24px; text-align: center; margin: 30px auto; display: block;">
+                      </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button timerplay" @click="startLunchTimer" :disabled="lunchTimerRunning">Start</button>
+                        <button class="button timerstop" @click="stopLunchTimer" :disabled="!lunchTimerRunning">Pause</button>
+                        <button class="button timerreset" @click="resetLunchTimer">Reset</button>
+                    </div>
+                </div>
+
+                <!---ESPACIO ENTRE LINEAS-->
+                <div style="margin-bottom: 20px;"></div>
+                <!---ESPACIO ENTRE LINEAS-->
+
+                <div class="box app-box" style="text-align: center; padding: 10px; border: 3px solid rgb(255, 255, 0);">
+                  <p style="font-size: 36px; margin: 0; padding: 10px;" :class="{
+                      'white': lunchMinutes > 2,
+                      'orange': lunchMinutes <= 2 ,
+                      'red': lunchMinutes <= 0 && lunchSeconds > 0,
+                      'negative': lunchSeconds <= 0
+                  }">{{ formattedLunchTime }}</p>
+              </div>
+              
+              
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    breakMinutes: 0,
+    lunchMinutes: 0,
+    breakSeconds: 0,
+    lunchSeconds: 0,
+    breakTimerRunning: false,
+    lunchTimerRunning: false,
+    breakIntervalId: null,
+    lunchIntervalId: null
+  },
+  computed: {
+    formattedBreakTime() {
+      const minutes = String(this.breakMinutes).padStart(2, '0');
+      const seconds = String(this.breakSeconds).padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    },
+    formattedLunchTime() {
+      const minutes = String(this.lunchMinutes).padStart(2, '0');
+      const seconds = String(this.lunchSeconds).padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    }
+  },
+  methods: {
+    startBreakTimer() {
+      if (this.breakMinutes === 0) {
+        return;
+      }
+      this.breakTimerRunning = true;
+      this.breakIntervalId = setInterval(() => {
+        if (this.breakSeconds > 0) {
+          this.breakSeconds--;
+        } else if (this.breakMinutes > 0) {
+          this.breakMinutes--;
+          this.breakSeconds = 59;
+        } else {
+          clearInterval(this.breakIntervalId);
+          this.breakTimerRunning = false;
+          alert('¡Tiempo de Break completado!');
+        }
+      }, 1000);
+    },
+    stopBreakTimer() {
+      clearInterval(this.breakIntervalId);
+      this.breakTimerRunning = false;
+    },
+    resetBreakTimer() {
+      clearInterval(this.breakIntervalId);
+      this.breakMinutes = 0;
+      this.breakSeconds = 0;
+      this.breakTimerRunning = false;
+    },
+    startLunchTimer() {
+      if (this.lunchMinutes === 0) {
+        return;
+      }
+      this.lunchTimerRunning = true;
+      this.lunchIntervalId = setInterval(() => {
+        if (this.lunchSeconds > 0) {
+          this.lunchSeconds--;
+        } else if (this.lunchMinutes > 0) {
+          this.lunchMinutes--;
+          this.lunchSeconds = 59;
+        } else {
+          clearInterval(this.lunchIntervalId);
+          this.lunchTimerRunning = false;
+          alert('¡Tiempo de Lunch completado!');
+        }
+      }, 1000);
+    },
+    stopLunchTimer() {
+      clearInterval(this.lunchIntervalId);
+      this.lunchTimerRunning = false;
+    },
+    resetLunchTimer() {
+      clearInterval(this.lunchIntervalId);
+      this.lunchMinutes = 0;
+      this.lunchSeconds = 0;
+      this.lunchTimerRunning = false;
+    }
+  }
+});
+</script>
+</body>
+</html>

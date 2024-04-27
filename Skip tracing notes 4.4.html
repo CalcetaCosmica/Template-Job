@@ -1,0 +1,799 @@
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Secciones con Botones</title>
+ <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #212529;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #5c1b6c;
+      padding: 10px;
+    }
+    .button {
+      padding: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      border: 1px solid #5c1b6c;
+      background-color: #7d2181;
+      color: #ffffff;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: #5c1b6c;
+    }
+    .content-section {
+      padding: 20px;
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    .form-group input[type="number"] {
+            background-color: #ffe880; /* Cuadro de entrada */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            width: 210px;  /*TAMAÑO DE IMPUT*/
+        }
+
+    .form-group select {
+            background-color: #C0FF80; /* Cuadro de seleccion */
+            border: none; 
+            padding: 5px; 
+            border-radius: 5px; 
+            outline: none; 
+            width: 70px;
+            flex-grow: 0;
+            }
+            
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+ </style>
+ <script>
+    function showSection(section) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(s => s.style.display = 'none');
+
+      const selectedSection = document.getElementById(section);
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+   
+    }
+    // Ejecuta la función drawBackground al cargar la página y cada vez que se cambia el tamaño de la ventana
+    window.addEventListener('load', drawBackground);
+    window.addEventListener('resize', drawBackground);
+ </script>
+</head>
+<body>
+ <div class="button-container">
+    <div class="button" onclick="showSection('section1')">Español</div>
+    <div class="button" onclick="showSection('section2')">English</div>
+    <div class="button" onclick="showSection('section3')">Stats</div>
+    <div class="button" onclick="showSection('section4')">Timer</div>
+ </div>
+
+ <canvas></canvas>
+
+ <div id="section1" class="content-section">
+    
+    
+  <meta charset="UTF-8">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+      /* Estilo del checkbox  */
+
+    .custom-checkbox {
+            appearance: none; 
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            width: 25px; 
+            height: 25px; 
+            border: 2px solid #4CAF50; 
+            border-radius: 5px; 
+            outline: none; 
+            cursor: pointer; 
+            transition: background-color 0.3s, border-color 0.3s; 
+            }
+
+            /* Estilo del checkbox cuando está marcado */
+            .custom-checkbox:checked {
+                background-color: #4CAF50; 
+            }
+
+           
+            .custom-checkbox:checked::before {
+                content: '✔'; 
+                display: block;
+                width: 80%;
+                height: 100%;
+                font-size: 20px; 
+                text-align: center;
+                line-height: 18px; 
+                color: white; 
+            }
+            .container label {
+              color: #a0d8f5; /* Color azul pastel */
+              font-size: 1.3em; /* Tamaño de fuente un poco más grande */
+            }
+
+        /* Estilo del checkbox  */
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #82E0AA;
+    }
+  </style>
+  
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+  <script>
+    let infoObtainedCounter = 0;
+
+   
+
+function copyToClipboard(text, option) {
+    let textToCopy = "";
+
+    if (document.getElementById('switch').checked) {
+        textToCopy += "previo - preview // ";
+    }
+
+    textToCopy += text;
+
+    const el = document.createElement('textarea');
+    el.value = textToCopy;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    if (option === 'RCSProvidesInformation') {
+        infoObtainedCounter++;
+        document.getElementById('infoObtainedCounter').innerText = infoObtainedCounter;
+    }
+
+    setTimeout(function() {
+        // Cerrar la alerta después de 0.5 segundos
+        window.close();
+    }, 500);
+}
+
+   
+    
+ 
+
+
+  </script>
+</head>
+<body>
+  <h1>Skip Tracing Notes</h1>
+
+  <div class="container" style="border: 2px solid white; padding: 20px;">
+    <form id="notaForm">
+
+        <div class="container">
+            <input type="checkbox" id="switch" class="custom-checkbox">
+            <label for="switch"><b>Modo previo</b></label>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="form-group">
+            <label for="infcont">Intento CMC</label>
+            <select id="infcont" name="infcont">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+
+  
+    </form>
+</div>
+
+
+  <h2>1. No contesta Lexis</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Skip:\nPosible Contacto de cliente proporcionado por proveedor externo (Uno mismo)')">Skip</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC-Cannot make call/No se puede generar llamada/ La cuenta no cumple los criterios de Marcación. / ['+document.getElementById('infcont').value+'] Records en Sistema / System Record ['+document.getElementById('infcont').value+']')">CMC Cannot make call</a>
+  </p>
+
+  <h2>2. Informaciòn obtenida</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Se obtuvo autorización de contacto.\nInformación: Número telefónico.', 'RCSProvidesInformation')">RCS Proporciona Información</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nEs el mismo número del cliente, Se obtuvo autorización de contacto.\nInformación:', 'RCSProvidesInformation')">RCS Mismo número del cliente</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProporciona Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)', 'RCSProvidesInformation')">RCS Agotamiento de Uso</a>
+  </p>
+
+<h2>3. Otros casos</h2>
+<p>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK No tiene informaciòn en el momento, se puede llamar despuès')">No tiene informaciòn en el momento</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo tiene Información de Localización, Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)\nCannot make call.')">No tiene Información</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo lo conoce (SE CRUZA COMO NO LLAMAR)')">No lo conoce</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo puede o no quiere Ayudar (SE CRUZA COMO NO LLAMAR)')">No puede o no quiere Ayudar</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPide que no le llamen (SE CRUZA COMO NO LLAMAR)')">Pide que no le llamen</a>
+  <a class="option" href="#" onclick="copyToClipboard('QA: OK\nPerdió contacto con el cliente (SE COMO NO LLAMAR)')">Perdió contacto con el cliente</a>
+</p>
+
+
+  <h2>4. No se puede realizar proceso</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Fuera de Horario de Marcación')">Fuera de Horario de Marcación</a>
+    <a class="option" href="#" onclick="copyToClipboard('No se encuentra, no se deja recado')">No se encuentra</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está disponible el tercero')">No está disponible el tercero</a>
+    <a class="option" href="#" onclick="copyToClipboard('SE CRUZA DUPLICADO (SE CRUZA A EQUIVOCADO)')">Duplicado</a>
+    <a class="option" href="#" onclick="copyToClipboard('No está en servicio (SE CRUZA COMO TAL)')">No está en servicio</a>
+    <a class="option" href="#" onclick="copyToClipboard('Sigue sin servicio (se vuelve a cruzar)')">Sigue sin servicio</a>
+    <a class="option" href="#" onclick="copyToClipboard('Telefónico Desconectado (SE CRUZA COMO PERMANENTEMENTE DESCONECTADO)')">Telefónico Desconectado</a>
+    <a class="option" href="#" onclick="copyToClipboard('NUMERO EQUIVOCADO (SE CRUZA A EQUIVOCADO)')">Nùmero equivocado</a>
+    <a class="option" href="#" onclick="copyToClipboard('Ininteligible (SE CRUZA COMO EQ) No Habla Español')">Ininteligible</a>
+    <a class="option" href="#" onclick="copyToClipboard('DCSD\nFALLECIO EL MIEMBRO. Se pide obituario y acta de defunfión. Agotamiento de Uso (SE CRUZA COMO NO LLAMAR)')">Fallecimiento del miembro</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC\nLas reglas de marcación no permiten llamar a este número en este momento.')">Error [Reglas de Marcación]</a>
+  </p>
+
+  <h2>5. Contactaciòn con el miembro:</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('CTE: \nQA: OK \nVerifica nombre y fecha de nacimiento: [OK] \nTransferencia cálida: [OK] \nHold:  [OK] \nAgradecimiento: [OK] \nSe transfiere a cartera: [OK] \nInfo:')">Cliente contactado</a>
+  </p>
+
+
+ </div>
+
+ <div id="section2" class="content-section">
+
+
+
+    <!-- Contenido de la segunda sección -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skip Tracing Notes</title>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: #000000;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #ccc;
+    }
+    h2 {
+      color: #ccc;
+    }
+    .option {
+      display: block;
+      margin-bottom: 10px;
+      color: #000;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .option:hover {
+      background-color: #82E0AA;
+    }
+  </style>
+  <script>
+    let infoObtainedCounter = 0;
+
+    function copyToClipboard(text, option) {
+    if (option === 'RCSProvidesInformation') {
+        infoObtainedCounter++;
+        let metaValue = parseInt(document.getElementById('metaRCS').value);
+        let percentage = (infoObtainedCounter / metaValue) * 100;
+        document.getElementById('infoObtainedCounter').innerText = percentage.toFixed(2); // Redondear el porcentaje a 2 decimales
+        updateChartWithCounterValue(); // Actualizar el gráfico con el nuevo porcentaje
+    }
+
+    const el = document.createElement('textarea');
+    el.value = text;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    setTimeout(function() {
+        // Cerrar la alerta después de 0.5 segundos
+        window.close();
+    }, 500);
+}
+
+  </script>
+</head>
+<body>
+  <h1>Skip Tracing Notes</h1>
+ 
+  <h2>1. Lexis Does Not Answer</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Skip:\nPossible Contact from External Provider (Self) /\nPosible Contacto de cliente proporcionado por proveedor externo (Uno mismo)')">Skip</a>
+    <a class="option" href="#" onclick="copyToClipboard('CMC-Cannot make call/No se puede generar llamada/ La cuenta no cumple los criterios de Marcación./The account does not meet the Marking criteria. /  ['+document.getElementById('infcont').value+'] Records en Sistema / System Record ['+document.getElementById('infcont').value+']')">CMC Cannot make call</a>
+</p>
+  
+  <h2>2. Information Obtained</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nProvides Location Information, Contact Authorization Obtained.\nInformation: Phone Number. /\nProporciona información de ubicación, autorización de contacto obtenida.\nInformación: Número de teléfono.', 'RCSProvidesInformation')">RCS Provides Information</a>
+    <a class="option" href="#" onclick="copyToClipboard('RCS\nQA: OK\nSame as Client Number, Contact Authorization Obtained.\nInformation: /\nIgual que el número del cliente, autorización de contacto obtenida.\nInformación:', 'RCSProvidesInformation')">RCS Same as Client's Number</a>
+    <a class="option" href=" #" onclick="copyToClipboard('RCS\nQA: OK\nProvides Location Information, Usage Exhausted (CROSSES AS DO NOT CALL) /\nProporciona información de ubicación, uso agotado (CRUZA COMO NO LLAMAR)', 'RCSProvidesInformation')">RCS Usage Exhausted</a>
+  </p>
+
+  <h2>3. Other Cases</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK No information at the moment, can call back later / QA: OK No hay información en este momento, puede llamar más tarde')">No information at the moment</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nNo Location Information, Usage Exhausted (CROSSES AS DO NOT CALL)\nCannot make call. / QA: OK\nSin información de ubicación, uso agotado (CRUZA COMO NO LLAMAR)\nNo se puede hacer la llamada.')">No Location Information</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nDoes not know them (CROSSES AS DO NOT CALL) / QA: OK\nNo los conoce (CRUZA COMO NO LLAMAR)')">Does not know them</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nUnable or unwilling to Help (CROSSES AS DO NOT CALL) / QA: OK\nNo puede o no quiere ayudar (CRUZA COMO NO LLAMAR)')">Unable or unwilling to Help</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nAsks not to be called (CROSSES AS DO NOT CALL) / QA: OK\nPide que no se le llame (CRUZA COMO NO LLAMAR)')">Asks not to be called</a>
+    <a class="option" href="#" onclick="copyToClipboard('QA: OK\nLost contact with the client (CROSSES AS DO NOT CALL) / QA: OK\nPerdió contacto con el cliente (CRUZA COMO NO LLAMAR)')">Lost contact with the client</a>
+  </p>
+  
+  <h2>4. Process Cannot Be Completed</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('Outside Dialing Hours / Fuera de horas de marcación')">Outside Dialing Hours</a>
+    <a class="option" href="#" onclick="copyToClipboard('Not available, no message allowed / No disponible, no se permite mensaje')">Not available</a>
+    <a class="option" href="#" onclick="copyToClipboard('Third party not available / Tercero no disponible')">Third party not available</a>
+    <a class="option" href="#" onclick="copyToClipboard('Duplicate (CROSSES AS WRONG NUMBER) / DUPLICADO (CRUZA COMO NÚMERO EQUIVOCADO)')">Duplicate</a>
+    <a class="option" href="#" onclick="copyToClipboard('Not in service (CROSSES AS SUCH) / No disponible (CRUZA COMO TAL)')">Not in service</a>
+    <a class="option" href="#" onclick="copyToClipboard('Still out of service (crosses again) / Todavía fuera de servicio (cruza de nuevo)')">Still out of service</a>
+    <a class="option" href="#" onclick="copyToClipboard('Disconnected Phone (CROSSES AS PERMANENTLY DISCONNECTED) / Teléfono desconectado (CRUZA COMO DESCONECTADO PERMANENTEMENTE)')">Disconnected Phone</a>
+    <a class="option" href="#" onclick="copyToClipboard('Wrong number (CROSSES AS WRONG NUMBER) / Número equivocado (CRUZA COMO NÚMERO EQUIVOCADO)')">Wrong number</a>
+    <a class="option" href="#" onclick="copyToClipboard('Member Deceased (CROSSES AS DO NOT CALL) / Miembro fallecido (CRUZA COMO NO LLAMAR)')">Member Deceased</a>
+    <a class="option" href="#" onclick="copyToClipboard('Error [Dialing Rules] / Error [Reglas de Marcación]')">Error [Dialing Rules]</a>
+  </p>
+  
+  <h2>5. Contact with Member:</h2>
+  <p>
+    <a class="option" href="#" onclick="copyToClipboard('\nCTE: \nQA: OK \nVerifies name and date of birth: [OK] \nWarm transfer: [OK] \nHold:  [OK] \nThanks: [OK] \nTransferred to portfolio: [OK] \nInfo:\n', 'memberContacted')">Member contacted</a>
+  </p>
+  
+
+
+
+
+  
+</div>
+  <div id="section3" class="content-section">
+  
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Dona</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <style>
+    #donutChart {
+      margin-top: 300px; /* Ajuste para mover el gráfico más abajo */
+      margin-left: 100; /* Centra horizontalmente */
+      margin-right: auto; /* Centra horizontalmente */
+      display: block; /* Asegura que el canvas sea un bloque */
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="color: white; font-size: 20px; text-align: center;">Meta RCS :</h2>
+<input type="number" id="metaRCS" min="0" style="background-color: #ffe880; border: none; padding: 8px; border-radius: 5px; outline: none; width: 210px; color: #333; font-size: 16px; margin: 10px auto; display: block;">
+
+
+  <h2 style="text-align: center; font-size: 24px; color: white; margin-top: 50px;">Total RCS : <span id="infoObtainedCounter" style="font-size: 24px;">0</span></h2>
+
+<canvas id="donutChart" width="400" height="400"></canvas>
+
+<script>
+// Datos iniciales para el gráfico
+let initialData = [0, 100]; // Solo RCS
+let initialColors = [
+  'rgb(255, 0, 0)', // Solo para RCS
+  'rgb(255, 255, 255)' // Color de fondo
+];
+
+// Configuración inicial del gráfico
+const initialConfig = {
+  type: 'doughnut',
+  data: {
+    
+    datasets: [{
+     
+      data: initialData,
+      backgroundColor: initialColors,
+      hoverOffset: 4
+    }]
+  }
+};
+
+// Crear el gráfico inicial
+let myChart = new Chart(
+  document.getElementById('donutChart'),
+  initialConfig
+);
+
+// Función para actualizar el gráfico con nuevos datos y colores
+function updateChart(newData, newColors) {
+  myChart.data.datasets[0].data = newData;
+  myChart.data.datasets[0].backgroundColor = newColors;
+  myChart.update();
+}
+
+// CODIGO GOD
+// Crear un observador de mutación
+const observer = new IntersectionObserver((entries) => {
+  // Iterar sobre las entradas observadas
+  entries.forEach(entry => {
+    if (entry.intersectionRatio > 0) {
+      // La sección es visible en la pantalla
+      updateChartWithCounterValue(); // Actualizar la gráfica al entrar en la sección
+    }
+  });
+});
+
+// Obtener la sección a observar
+const section3 = document.getElementById('section3');
+
+// Observar la sección
+observer.observe(section3);
+// CODIGO GOD
+
+// Función para obtener el valor del contador y actualizar el gráfico
+function updateChartWithCounterValue() {
+  let counterValue = parseInt(document.getElementById('infoObtainedCounter').innerText);
+  let metaValue = parseInt(document.getElementById('metaRCS').value);
+  let percentage = (counterValue / metaValue) * 100;
+  
+  // Definir los colores basados en el porcentaje
+  let newColors = [];
+  if (percentage > 0) {
+    newColors.push('rgb(119, 221, 119)'); // Parte roja
+  } else {
+    newColors.push('rgb(255, 105, 97)'); // Parte blanca
+  }
+  newColors.push('rgb(255, 105, 97)'); // Parte blanca
+  
+  let newData = [percentage, 100 - percentage]; // Actualizar los datos solo para RCS
+  updateChart(newData, newColors);
+}
+
+// Llamar a la función de actualización del gráfico al cargar la página
+updateChartWithCounterValue();
+
+// Escuchar cambios en el contador y actualizar el gráfico en consecuencia
+document.getElementById('infoObtainedCounter').addEventListener('input', updateChartWithCounterValue);
+document.getElementById('metaRCS').addEventListener('input', updateChartWithCounterValue);
+</script>
+
+
+</div>
+<div id="section4" class="content-section">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Break and Lunch Timers</title>
+
+<style>
+  /* Estilos globales para el documento */
+  
+.white {
+  color: #fff;
+}
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+
+.negative {
+    color: red; /* o el color que desees para los números negativos */
+}
+
+  .red {
+    color: red;
+  }
+  
+  .yellow {
+    color: #ED7D31;
+  }
+  
+  /* Estilos específicos para el elemento #app */
+  #app .app-box {
+    background-color: #000;
+    color: #fff;
+  }
+
+  button.timerplay {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerplay:hover {
+    background-color: #45a049;
+}
+button.timerstop {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerstop:hover {
+    background-color: #d11616;
+}
+button.timerreset {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #5B9AD4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+button.timerreset:hover {
+    background-color: #4278aa;
+}
+
+</style>
+</head>
+<body>
+  
+
+
+<div id="app" class="section">
+    <div class="container">
+        
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <h2 class="subtitle">Break Timer</h2>
+                    
+                    <div class="control custom-inputtimer">
+                      <input class="input" type="number" v-model="breakMinutes" min="0" style="background-color: #FFA500; border: none; padding: 8px; border-radius: 5px; outline: none; width: 210px; color: #333; font-size: 24px; text-align: center; margin: 30px auto; display: block;">
+                    </div>
+                    
+                </div>
+
+                <div class="field">
+                  <div class="control">
+                      <button class="button timerplay" @click="startBreakTimer" :disabled="breakTimerRunning">Start</button>
+                      <button class="button timerstop" @click="stopBreakTimer" :disabled="!breakTimerRunning">Pause</button>
+                      <button class="button timerreset" @click="resetBreakTimer">Reset</button>
+                  </div>
+              </div>
+
+              <!---ESPACIO ENTRE LINEAS-->
+              <div style="margin-bottom: 20px;"></div>
+              <!---ESPACIO ENTRE LINEAS-->
+
+                <div class="box app-box" style="text-align: center; padding: 10px; border: 3px solid rgb(255, 255, 0);">
+                    <p style="font-size: 36px; margin: 0; padding: 10px;" :class="{
+                        'white': breakMinutes > 2,
+                        'orange': breakMinutes <= 2,
+                        'red': breakMinutes <= 0 && breakSeconds > 0,
+                        'negative': breakSeconds <= 0
+                    }">{{ formattedBreakTime }}</p>
+                </div>
+
+              
+
+                
+            </div>
+            <div class="column">
+                <div class="field">
+                    <h2 class="subtitle">Lunch Timer</h2>
+                    <div class="control">
+                        <input class="input" type="number" v-model="lunchMinutes" min="0" style="background-color: #FFA500; border: none; padding: 8px; border-radius: 5px; outline: none; width: 210px; color: #333; font-size: 24px; text-align: center; margin: 30px auto; display: block;">
+                      </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button timerplay" @click="startLunchTimer" :disabled="lunchTimerRunning">Start</button>
+                        <button class="button timerstop" @click="stopLunchTimer" :disabled="!lunchTimerRunning">Pause</button>
+                        <button class="button timerreset" @click="resetLunchTimer">Reset</button>
+                    </div>
+                </div>
+
+                <!---ESPACIO ENTRE LINEAS-->
+                <div style="margin-bottom: 20px;"></div>
+                <!---ESPACIO ENTRE LINEAS-->
+
+                <div class="box app-box" style="text-align: center; padding: 10px; border: 3px solid rgb(255, 255, 0);">
+                  <p style="font-size: 36px; margin: 0; padding: 10px;" :class="{
+                      'white': lunchMinutes > 2,
+                      'orange': lunchMinutes <= 2 ,
+                      'red': lunchMinutes <= 0 && lunchSeconds > 0,
+                      'negative': lunchSeconds <= 0
+                  }">{{ formattedLunchTime }}</p>
+              </div>
+              
+              
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    breakMinutes: 0,
+    lunchMinutes: 0,
+    breakSeconds: 0,
+    lunchSeconds: 0,
+    breakTimerRunning: false,
+    lunchTimerRunning: false,
+    breakIntervalId: null,
+    lunchIntervalId: null
+  },
+  computed: {
+    formattedBreakTime() {
+      const minutes = String(this.breakMinutes).padStart(2, '0');
+      const seconds = String(this.breakSeconds).padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    },
+    formattedLunchTime() {
+      const minutes = String(this.lunchMinutes).padStart(2, '0');
+      const seconds = String(this.lunchSeconds).padStart(2, '0');
+      return `${minutes}:${seconds}`;
+    }
+  },
+  methods: {
+    startBreakTimer() {
+      if (this.breakMinutes === 0) {
+        return;
+      }
+      this.breakTimerRunning = true;
+      this.breakIntervalId = setInterval(() => {
+        if (this.breakSeconds > 0) {
+          this.breakSeconds--;
+        } else if (this.breakMinutes > 0) {
+          this.breakMinutes--;
+          this.breakSeconds = 59;
+        } else {
+          clearInterval(this.breakIntervalId);
+          this.breakTimerRunning = false;
+          alert('¡Tiempo de Break completado!');
+        }
+      }, 1000);
+    },
+    stopBreakTimer() {
+      clearInterval(this.breakIntervalId);
+      this.breakTimerRunning = false;
+    },
+    resetBreakTimer() {
+      clearInterval(this.breakIntervalId);
+      this.breakMinutes = 0;
+      this.breakSeconds = 0;
+      this.breakTimerRunning = false;
+    },
+    startLunchTimer() {
+      if (this.lunchMinutes === 0) {
+        return;
+      }
+      this.lunchTimerRunning = true;
+      this.lunchIntervalId = setInterval(() => {
+        if (this.lunchSeconds > 0) {
+          this.lunchSeconds--;
+        } else if (this.lunchMinutes > 0) {
+          this.lunchMinutes--;
+          this.lunchSeconds = 59;
+        } else {
+          clearInterval(this.lunchIntervalId);
+          this.lunchTimerRunning = false;
+          alert('¡Tiempo de Lunch completado!');
+        }
+      }, 1000);
+    },
+    stopLunchTimer() {
+      clearInterval(this.lunchIntervalId);
+      this.lunchTimerRunning = false;
+    },
+    resetLunchTimer() {
+      clearInterval(this.lunchIntervalId);
+      this.lunchMinutes = 0;
+      this.lunchSeconds = 0;
+      this.lunchTimerRunning = false;
+    }
+  }
+});
+</script>
+</body>
+</html>
